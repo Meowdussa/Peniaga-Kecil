@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+.input-group input-group-lg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
