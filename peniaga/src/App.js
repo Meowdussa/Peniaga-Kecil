@@ -1,27 +1,28 @@
 import './App.css';
-import home from './pages/home';
-
-import Navbar from './components/Navbar';
-//import { Router } from 'express';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import OwnerView from "./OwnerView";
+import UserView from './UserView';
+import React, { useState } from "react";
 
 function App() {
+ // const [isUser, setIsUser] = useState([]);
+  //const [isOwner, setIsOwner]= useState([]);
+const [isUser, setisUser] = useState(true);
+
+const handleChangeView = (isUser) =>{
+  setisUser(isUser);
+}
 
   
   return (
-    <div className="container">
-      <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/" exact component={home}/> //link to home page
-      </Switch>
-      </Router>
+    <div className="App">
+      <h1>ٱلْحَمْدُ لِلَّٰهِ</h1>
+      {/* <OwnerView /> */}
+    <div>
+    <button className="rightside" onClick={()=>handleChangeView(true)}>Post your business here</button><br/>
+    </div>
+
+    
+   {(isUser)? <UserView/>: <OwnerView/> }
     </div>
 
       
