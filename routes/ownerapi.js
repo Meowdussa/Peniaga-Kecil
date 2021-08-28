@@ -41,10 +41,15 @@ router.get("/menu/:id", function (req,res,next) {
   .catch(err => res.status(500).send(err))
 })
 
-// insert a new shop 
+// insert a new shop 1st step -
 router.post("/owner",function (req, res, next) {
+  console.log(req.body);
   db(`INSERT INTO owner(shop_name,address)VALUES("${req.body.shop_name}","${req.body.address}")`)
+
   .then(results => {
+     
+    //add menu items //helper func to add menu
+
     allOwners(req,res);
   })
   .catch(err=>res.status(404).send(err))

@@ -1,42 +1,99 @@
-import React from 'react'
-//import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AddMenu from "./Addmenu";
+//import UserView from "./UserView";
+let axios = require("axios");
 
 
-const Owner = (props) => {
-    //const[menu, setMenu] = useState(null);
+const Owner = () => {
+    let [owner,setOwner] = useState([]);
+    let [input, setInput] = useState({}); //the state of input box
+    let [error, setError] = useState(null);
 
-    //const handleC
+//const url = "http://localhost:5000/owner";
+
+const addOwner = () => {
+    
+    axios.post(`http://localhost:5000/owner`,input)    
+    .then((response) =>{
+        console.log(response.data);
+        setInput(response.data);
+        console.log("Shop added")
+    })
+    .catch(error=>{
+        setError("Error in adding new shop")
+    })    
+};
+
+
+useEffect(()=>{
+    axios.get(`http://localhost:5000/`)
+    .then((response)=>{
+        setInput(response.data);
+    });
+},[]);
+
+
+
+const handleAddOwner = event => {
+    event.preventDefault();
+    addOwner();
+  };
+
+ 
+const handleChange = e => {
+    setInput({ ...input, [e.target.name]: e.target.value }); //to handle the changes in input box
+
+};
+  
+
+
+
+
+/* const buttonLoop = () =>{
+
+} */
+
+
+
+/*  const handleOnSubmit = event =>{ //want to return to home page
+    event.preventDefault();
+    return <UserView/>
+ }; */
+
 
     return (
-        
-        <form action="" method="POST">
+        <div>
+            <form>
             <div>
             <label/>Shop Name<label/>
-            <input name="shopname"/>
+            <input 
+            onChange={e=>handleChange(e)}
+            /* value={input.shop_name} */ 
+            type="text"
+            name="shop_name"/>
+            
             </div>
 
             <div>
             <label/>Address<label/>
-            <input name="address"/><br/>
-            </div>
+            <input 
+            onChange={e=>handleChange(e)}
+            /* value={input.address}  */
+            type="text"
+            name="address"/><br/>
+            </div>        
+            </form>
+            <button
+            onClick={e=>handleAddOwner(e)}
+            >Submit</button>
 
-            <div>
-            <label/>Menu List<label/><br/>
-            <input placeholder="item" name="Menu"/><span/>
-            <input placeholder ="price" name="price"/>
-            <input type="file" id="file" name="file"/><br/>
+            {/* <div>
+                <button onSubmit={e=>handleOnSubmit(e)}>Return Home</button>
+            </div> */}
+            <AddMenu/>
+        </div>
+            
 
-            <input placeholder="item" name="Menu"/><span/>
-            <input placeholder ="price" name="price"/>
-            <input type="file" id="file" name="file"/><br/>
-
-            <input placeholder="item" name="Menu"/><span/>
-            <input placeholder ="price" name="price"/>
-            <input type="file" id="file" name="file"/><br/>
-         
-            </div>
-            <button>Submit</button>
-        </form>
         
     )
 }

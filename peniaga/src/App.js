@@ -1,6 +1,6 @@
 import './App.css';
 import OwnerView from "./OwnerView";
-import UserView from './UserView';
+import UserView from './UserView'; 
 import React, { useState } from "react";
 
 function App() {
@@ -12,15 +12,16 @@ const handleChangeView = (isUser) =>{
   setisUser(isUser);
 }
 
+
   
   return (
     <div className="App">
       <h1>ٱلْحَمْدُ لِلَّٰهِ</h1>
       {/* <OwnerView /> */}
     <div>
-    <button className="rightside" onClick={()=>handleChangeView(true)}>Post your business here</button><br/>
+    {(isUser)? 
+    <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}
     </div>
-
     
    {(isUser)? <UserView/>: <OwnerView/> }
     </div>
