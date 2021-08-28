@@ -1,8 +1,12 @@
+// import Grid from '@material-ui/core/Grid';
+// import Paper from '@material-ui/core/Paper';
+// import React, { useState, useEffect } from "react";
 import './App.css';
 import OwnerView from "./OwnerView";
 import UserView from './UserView'; 
 import React, { useState } from "react";
 import Owner from './OwnerView';
+
 
 function App() {
  // const [isUser, setIsUser] = useState([]);
@@ -14,6 +18,7 @@ const handleChangeView = (isUser) =>{
 }
 
 
+
   
   return (
     <div className="App">
@@ -23,10 +28,12 @@ const handleChangeView = (isUser) =>{
     {(isUser)? 
     <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}
     </div>
-   {(isUser)? <UserView/>: <OwnerView/> }
-   
-    </div>
 
+   {(isUser)? <UserView/>: <OwnerView/> }
+
+      
+    </div>
+//useeffect gett all owner 
       
   );
 }

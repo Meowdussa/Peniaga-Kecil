@@ -57,6 +57,7 @@ router.post("/owner",function (req, res, next) {
 
 //insert menu
 router.post("/owner/:id",function (req, res, next) {
+  //console.log(`${req.input.item},${req.input.price}`, "in the api")
   db(`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`)
   .then(results => {
     allOwners(req,res);
