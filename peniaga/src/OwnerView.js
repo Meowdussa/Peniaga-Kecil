@@ -109,10 +109,11 @@ const handleChange = e => {
                     <div key={param.id}>
                        
                         <div>
+                        <AddMenu ownerDetails={param}/>
                         <p>{`Shop name :${param.shop_name}`}</p>
                         <p>{`Address:${param.address}`}</p>
                        </div>  
-                    <AddMenu ownerDetails={param}/>
+                    
                    
                     </div>
                 ))}
