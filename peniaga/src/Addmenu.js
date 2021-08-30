@@ -9,53 +9,39 @@ let [menuButton, setMenuButton] =  useState(false);
 
 
     const addMenu = () => {
-        axios({
-            method:"post",
-            url: `/owner/${id}`,
-            body: {
-                item: "",
-                price: ""
-            },
-        })
-        .then(response =>{
-            console.log(response);
-        })
-            .catch(error =>{
-                setError("Error in adding menu");
-            })
+       axios.post(`http://localhost:5000/owner/:
+       `,input)
+       .then((response) =>{
+           setInput(response.data);
+           console.log("Menu added")
+       })
+       .catch(error=>{
+        setError("Error in adding new menu")
+       })
     }
 
 const handleAddMenu = event =>{
     event.preventDefault();
     addMenu();
-    setInput({
+   /*  setInput({
         item: "",
         price: ""
-    });
+    }); */
 };
 
 /* const handleChange = e => {
     setInput({ ...input, [e.target.name]: e.target.value });};
  */
 
-
-
-    
+   
     return (
         <div>
            <form>
            
             <label/>Menu List<label/><br/>
-            {(menuButton === true)? 
-            for(let i=0; i<15; i++){
-             <div>{i}
             <input placeholder="item" name="Menu"/>
             <input placeholder ="price" name="price"/>
-            </div>
-            }
-            : 
-            <div/> 
-        
+
             <button
             onClick={(e)=>{e.preventDefault(); setMenuButton(true); return false}}              
             >Add menu</button>

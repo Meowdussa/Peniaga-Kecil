@@ -1,3 +1,4 @@
+import { response } from "express";
 import React, { useState, useEffect } from "react";
 import AddMenu from "./Addmenu";
 //import UserView from "./UserView";
@@ -5,18 +6,17 @@ let axios = require("axios");
 
 
 const Owner = () => {
-    let [owner,setOwner] = useState([]);
+    let [owner,setOwner] = useState({});
     let [input, setInput] = useState({}); //the state of input box
     let [error, setError] = useState(null);
 
-//const url = "http://localhost:5000/owner";
 
 const addOwner = () => {
     
     axios.post(`http://localhost:5000/owner`,input)    
     .then((response) =>{
         console.log(response.data);
-        setInput(response.data);
+        setOwner(response.data);
         console.log("Shop added")
     })
     .catch(error=>{
@@ -24,11 +24,23 @@ const addOwner = () => {
     })    
 };
 
+//getOwner
+
+const getOwner = () => {
+    axios
+        .get(`http://localhost:5000/`,owner)
+        .then(response =>{
+            setOwner(response.data);
+        })
+        .catch(function(error){
+            console.log("Error adding students")
+        })
+}
 
 useEffect(()=>{
     axios.get(`http://localhost:5000/`)
     .then((response)=>{
-        setInput(response.data);
+        setOwner(response.data);
     });
 },[]);
 
@@ -36,7 +48,8 @@ useEffect(()=>{
 
 const handleAddOwner = event => {
     event.preventDefault();
-    addOwner();
+    addOwner();   
+    
   };
 
  
@@ -45,15 +58,6 @@ const handleChange = e => {
 
 };
   
-
-
-
-
-/* const buttonLoop = () =>{
-
-} */
-
-
 
 /*  const handleOnSubmit = event =>{ //want to return to home page
     event.preventDefault();
@@ -68,7 +72,7 @@ const handleChange = e => {
             <label/>Shop Name<label/>
             <input 
             onChange={e=>handleChange(e)}
-            /* value={input.shop_name} */ 
+            
             type="text"
             name="shop_name"/>
             
@@ -78,23 +82,28 @@ const handleChange = e => {
             <label/>Address<label/>
             <input 
             onChange={e=>handleChange(e)}
-            /* value={input.address}  */
             type="text"
             name="address"/><br/>
             </div>        
-            </form>
+            
             <button
             onClick={e=>handleAddOwner(e)}
-            >Submit</button>
+            >Submit</button>   
 
             {/* <div>
-                <button onSubmit={e=>handleOnSubmit(e)}>Return Home</button>
-            </div> */}
+                {owner.map(param=>(
+                    <div key={param.id}>
+                        return (
+                        <h1>{`Shop name :${shop_name}`}</h1>
+                        <h3>{`Address:${address}`}</h3>
+                        )                        
+                    </div>
+                ))}
+            </div> */}      
             <AddMenu/>
-        </div>
-            
 
-        
+            </form>
+        </div>
     )
 }
 
