@@ -37,7 +37,7 @@ const getOwner = () => {
             setOwner(response.data);
         })
         .catch(function(error){
-            console.log("Error adding students")
+            console.log("Error getting shop")
         })
 }
 

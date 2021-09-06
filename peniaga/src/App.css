@@ -1,12 +1,11 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-  background-color: rgb(255, 168, 251);
 }
-
 
 .App-link {
   color: #61dafb;
@@ -18,3 +17,11 @@
   align-items: center;
  
 }
+/* 
+------------------------------------------------- */
+/* .map {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */

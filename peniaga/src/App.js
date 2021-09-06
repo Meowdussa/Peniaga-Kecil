@@ -6,6 +6,7 @@ import OwnerView from "./OwnerView";
 import UserView from './UserView'; 
 import React, { useState } from "react";
 import Owner from './OwnerView';
+import Location from './components/Location';
 
 
 function App() {
@@ -21,6 +22,7 @@ const handleChangeView = (isUser) =>{
 
   
   return (
+    <div>
     <div className="App">
       <h1>Peniaga Kecil</h1>
       {/* <OwnerView /> */}
@@ -31,9 +33,11 @@ const handleChangeView = (isUser) =>{
 
    {(isUser)? <UserView/>: <OwnerView/> }
 
-      
+    
     </div>
-//useeffect gett all owner 
+    <Location></Location>
+    </div>
+//useeffect get all owner 
       
   );
 }

@@ -9,7 +9,7 @@ const DB_NAME = process.env.DB_NAME;
 const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
-  password: "Mysql93949602",
+  password: DB_PASS || "1234",
   database: DB_NAME || "peniaga",
   multipleStatements: true
 });
@@ -19,7 +19,7 @@ con.connect(function(err) {
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists owner; CREATE TABLE owner(id INT NOT NULL AUTO_INCREMENT, shop_name VARCHAR(40) not null, address VARCHAR(40) not null, menu VARCHAR(200),PRIMARY KEY (id));";
+    "DROP TABLE if exists owner; CREATE TABLE owner(id INT NOT NULL AUTO_INCREMENT, shop_name VARCHAR(40) not null, address VARCHAR(40) not null,PRIMARY KEY (id));";
   con.query(sql, function(err, result) {
     if (err) throw err;
     console.log("Table creation `owner` was successful!");
