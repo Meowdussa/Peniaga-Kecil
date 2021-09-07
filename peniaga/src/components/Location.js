@@ -7,6 +7,7 @@ const opencage = require('opencage-api-client');
 
 //BCN {"lat": 41.38658717375506, "lng": 2.156753540039063}
 //NY {"lat": 40.730610, "lng": -73.935242}
+//JITRA {"lat": 6.2644, "lng": 100.4202}                      
 
 const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY; 
 
@@ -57,19 +58,21 @@ const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
   return (
     <div className="App mt-3">
 
-      <h1 className="mytitle">My Pretty Map</h1>
+      <h1 className="mytitle">Place your shop</h1>
       <Map ref={map} center={[6.2644, 100.4202]}
         onClick={addMarker}
       zoom={15}
       >
         <TileLayer
-          url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png"
-          attribution='&copy; Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; Map tiles by <a href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik">Mapnik</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
           {markers.map((position, idx) => 
           <Marker key={`marker-${idx}`} position={position}>
             <Popup>
-          <span>Hello world!</span>
+          <span>Lat:{position.lat.toFixed(5)}</span>
+          <br></br>
+          <span>Lng:{position.lng.toFixed(5)}</span>
             </Popup>
           </Marker>
         )}

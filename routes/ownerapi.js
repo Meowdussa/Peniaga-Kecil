@@ -42,9 +42,9 @@ router.get("/menu/:id", function (req,res,next) {
 })
 
 // insert a new shop 1st step -
-router.post("/owner",function (req, res, next) {
+router.post("/",function (req, res, next) {
   console.log(req.body);
-  db(`INSERT INTO owner(shop_name,address)VALUES("${req.body.shop_name}","${req.body.address}")`)
+  db(`INSERT INTO owner(shop_name,address,lat,lng)VALUES("${req.body.shop_name}","${req.body.address}","${req.body.lat}","${req.body.lng}")`)
 
   .then(results => {
      
