@@ -81,7 +81,7 @@ const Owner = () => {
 
   return (
     <div>
-      <form>
+          <div className="shop-map">
         <div className="input-container">
           <div className="shop-name">
             <label />
@@ -93,7 +93,6 @@ const Owner = () => {
               type="text"
               name="shop_name"
             />
-            <br></br>
             <label />
             Address
             <label />
@@ -101,6 +100,11 @@ const Owner = () => {
               onChange={(e) => handleChange(e)}
               type="text"
               name="address"
+            />
+            <label>Phone number</label>
+            <input
+              onChange={(e) => handleChange(e)}
+              name="phone"
             />
             <br />
             Coordinates <i>(get coordinates from marker on map)</i>
@@ -113,12 +117,16 @@ const Owner = () => {
             <button onClick={(e) => handleAddOwner(e)}>Submit</button>
           </div>
         </div>
+        <div className="map-size">
+        <Location />
+        </div>
+        </div>
         <div>
-          <Grid container>
+          {/* <Grid container>
             <Grid>
               <Paper></Paper>
             </Grid>
-          </Grid>
+          </Grid> */}
           <div className="shop-cont">
             {owner.map((param) => (
               <div key={param.id}>
@@ -130,8 +138,6 @@ const Owner = () => {
             ))}
           </div>
         </div>
-      </form>
-      <Location />
     </div>
   );
 };
