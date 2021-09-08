@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import "./Location.css";
+import "./Ownermap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import { Icon } from "leaflet";
 const opencage = require('opencage-api-client');
@@ -11,7 +11,7 @@ const opencage = require('opencage-api-client');
 
 const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY; 
 
- function Location (props) {
+ function Ownermap (props) {
    const [markers, setMarkers] = useState([])
    const [input, setInput] = useState("")
    const map = useRef(null);
@@ -100,4 +100,4 @@ const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
 
   }
 
-export default Location;
+export default Ownermap;

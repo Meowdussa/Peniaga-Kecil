@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 // import Container from '@material-ui/core/Container';
 import React, { useState, useEffect } from "react";
 import AddMenu from "./Addmenu";
-import Location from "./components/Location";
+import Ownermap from "./components/Ownermap";
 import "./OwnerView.css";
 //import UserView from "./UserView";
 let axios = require("axios");
@@ -81,7 +81,7 @@ const Owner = () => {
 
   return (
     <div>
-          <div className="shop-map">
+      <div className="shop-map">
         <div className="input-container">
           <div className="shop-name">
             <label />
@@ -102,10 +102,7 @@ const Owner = () => {
               name="address"
             />
             <label>Phone number</label>
-            <input
-              onChange={(e) => handleChange(e)}
-              name="phone"
-            />
+            <input onChange={(e) => handleChange(e)} name="phone" />
             <br />
             Coordinates <i>(get coordinates from marker on map)</i>
             <br />
@@ -118,26 +115,26 @@ const Owner = () => {
           </div>
         </div>
         <div className="map-size">
-        <Location />
+          <Ownermap />
         </div>
-        </div>
-        <div>
-          {/* <Grid container>
+      </div>
+      <div>
+        {/* <Grid container>
             <Grid>
               <Paper></Paper>
             </Grid>
           </Grid> */}
-          <div className="shop-cont">
-            {owner.map((param) => (
-              <div key={param.id}>
-                  {`Shop name :${param.shop_name}`}
-                  {`Address:${param.address}`}
-                <button onClick={() => deleteOwner(param.id)}>DELETE</button>
-                <AddMenu ownerDetails={param} />
-              </div>
-            ))}
-          </div>
+        <div className="shop-cont">
+          {owner.map((param) => (
+            <div key={param.id}>
+              {`Shop name :${param.shop_name}`}
+              {`Address:${param.address}`}
+              {/* <button onClick={() => deleteOwner(param.id)}>DELETE</button> */}
+              <AddMenu ownerDetails={param} />
+            </div>
+          ))}
         </div>
+      </div>
     </div>
   );
 };
