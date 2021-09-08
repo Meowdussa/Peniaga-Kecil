@@ -84,34 +84,46 @@ const Owner = () => {
       <div className="shop-map">
         <div className="input-container">
           <div className="shop-name">
-            <label />
-            Shop Name
-            <label />
-            <input
-              onChange={(e) => handleChange(e)}
-              /* value={input.shop_name} */
-              type="text"
-              name="shop_name"
-            />
-            <label />
-            Address
-            <label />
-            <input
-              onChange={(e) => handleChange(e)}
-              type="text"
-              name="address"
-            />
-            <label>Phone number</label>
-            <input onChange={(e) => handleChange(e)} name="phone" />
-            <br />
-            Coordinates <i>(get coordinates from marker on map)</i>
-            <br />
-            <label>Latitude</label>
-            <input onChange={(e) => handleChange(e)} name="lat" />
-            <label>Longitude</label>
-            <input name="lng" />
-            <br />
-            <button onClick={(e) => handleAddOwner(e)}>Submit</button>
+            <form onSubmit={(e) => handleAddOwner(e)}>
+              <h4>Add your shop</h4>
+              <label />
+              Shop Name
+              <label />
+              <br />
+              <input
+                onChange={(e) => handleChange(e)}
+                /* value={input.shop_name} */
+                type="text"
+                name="shop_name"
+              />
+              <br />
+              <label />
+              Address
+              <label />
+              <br />
+              <input
+                onChange={(e) => handleChange(e)}
+                type="text"
+                name="address"
+              />
+              <br />
+              <label>Phone number</label>
+              <br />
+              <input onChange={(e) => handleChange(e)} name="phone" />
+              <br />
+              Coordinates <i>(get coordinates from marker on map)</i>
+              <br />
+              <label>Latitude</label>
+              <br />
+              <input onChange={(e) => handleChange(e)} name="lat" />
+              <br />
+              <label>Longitude</label>
+              <br />
+              <input name="lng" />
+              <br />
+              <br />
+              <button className="btn-sub">Submit</button>
+            </form>
           </div>
         </div>
         <div className="map-size">
@@ -128,8 +140,10 @@ const Owner = () => {
           {owner.map((param) => (
             <div key={param.id}>
               {`Shop name :${param.shop_name}`}
+              <br />
               {`Address:${param.address}`}
               {/* <button onClick={() => deleteOwner(param.id)}>DELETE</button> */}
+              <br />
               <AddMenu ownerDetails={param} />
             </div>
           ))}

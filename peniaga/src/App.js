@@ -18,9 +18,9 @@ function App() {
   };
 
   return (
-    <div>
+    <body>
+      <img src="https://user-images.githubusercontent.com/86279819/132444881-5d557210-69d1-4c8f-81ef-e91a87e342b7.png" width="400" height="150" class="center"/>
       <div className="App">
-        <h1>Peniaga Kecil</h1>
         {/* <OwnerView /> */}
         <div>
           <Router>
@@ -44,9 +44,9 @@ function App() {
                 </Link>
               </div>
             </div>
+            <Route path="/" exact component={Usermap} />
             <Route path="/owner" exact component={OwnerView} />
           </Router>
-          <Usermap/>
           {/* {(isUser)? 
     <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}
     </div>
@@ -54,8 +54,7 @@ function App() {
    {(isUser)? <UserView/>: <OwnerView/>} */}
         </div>
       </div>
-    </div>
-    //useeffect get all owner
+    </body>
   );
 }
 

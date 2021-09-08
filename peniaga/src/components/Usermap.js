@@ -70,9 +70,9 @@ const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
           {markers.map((position, idx) => 
           <Marker key={`marker-${idx}`} position={position}>
             <Popup>
-          <span>Lat:{position.lat.toFixed(5)}</span>
+          <span>Mak Leha Nasi Lemak</span>
           <br></br>
-          <span>Lng:{position.lng.toFixed(5)}</span>
+          <span><a href='https://wa.me/'>WhatsApp</a><br/></span>
             </Popup>
           </Marker>
         )}
