@@ -1,0 +1,16 @@
+/* .location-map {
+    margin-top: 20vw;
+    height: 500vw;
+    width: 500vw;
+} */
+
+.leaflet-container {
+  margin-top: 10vh;
+    width: 100%;
+    height: 60vh;
+  }
+  
+  .mytitle
+  { 
+    text-align: center
+   }
