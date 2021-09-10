@@ -119,7 +119,7 @@ const Owner = () => {
               <br />
               <label>Longitude</label>
               <br />
-              <input name="lng" />
+              <input onChange={(e) => handleChange(e)} name="lng" />
               <br />
               <br />
               <button className="btn-sub">Submit</button>

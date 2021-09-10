@@ -72,7 +72,7 @@ const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
             <Popup>
           <span>Mak Leha Nasi Lemak</span>
           <br></br>
-          <span><a href='https://wa.me/'>WhatsApp</a><br/></span>
+          <span><a href='https://wa.me/011' target="_blank">Phone number</a><br/></span>
             </Popup>
           </Marker>
         )}
