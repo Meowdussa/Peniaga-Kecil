@@ -5,6 +5,7 @@ import "./App.css";
 import OwnerView from "./OwnerView";
 import UserView from "./UserView";
 import React, { useState } from "react";
+import Search from "./components/Search";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Usermap from "./components/Usermap";
 
@@ -12,7 +13,6 @@ function App() {
   // const [isUser, setIsUser] = useState([]);
   //const [isOwner, setIsOwner]= useState([]);
   const [isUser, setisUser] = useState(true);
-
   const handleChangeView = (isUser) => {
     setisUser(isUser);
   };
@@ -22,6 +22,7 @@ function App() {
       <img src="https://user-images.githubusercontent.com/86279819/132444881-5d557210-69d1-4c8f-81ef-e91a87e342b7.png" width="400" height="150" class="center"/>
       <div className="App">
         {/* <OwnerView /> */}
+
         <div>
           <Router>
             <div className="linkers">
@@ -44,16 +45,20 @@ function App() {
                 </Link>
               </div>
             </div>
-            <Route path="/" exact component={Usermap} />
+            <Route path="/user" exact component={Usermap} />
             <Route path="/owner" exact component={OwnerView} />
+            <Route path="/" exact component={Search} />
+
           </Router>
           {/* {(isUser)? 
     <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}
     </div>
 
    {(isUser)? <UserView/>: <OwnerView/>} */}
-        </div>
+        </div>    
+      </div> 
       </div>
+
     </body>
   );
 }
