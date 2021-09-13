@@ -22,15 +22,23 @@ const allOwners = (req, res, next) => {
 
 //get one owner
 router.get("/:id", function(req,res,next) {
-  db(`SELECT shop_name,address FROM owner WHERE id=${req.params.id};`)
+  db(`SELECT shop_name,address FROM owner WHERE id=${req.params.owner_id};`)
   .then(results =>{
     res.send(results.data);
   })
   .catch(err => res.status(500).send(err))
 })
 
+// get city
+router.get("/:id", function(req,res,next) {
+  db(`SELECT city FROM owner WHERE id=${req.params.owner_id};`)
+  .then(results =>{
+    res.send(results.data);
+  })
+  .catch(err => res.status(500).send(err))
+})
 
-//get one shop menu
+//get one shop menu KIV
 router.get("/menu/:id", function (req,res,next) {
   db(`SELECT owner.id,item_id,owner_menu.item,owner_menu.price FROM owner_menu INNER JOIN owner ON owner.id=owner_menu.owner_id WHERE owner.id=${req.params.id};`)
   .then(results => {
@@ -44,7 +52,9 @@ router.get("/menu/:id", function (req,res,next) {
 // insert a new shop 1st step -
 router.post("/",function (req, res, next) {
   console.log(req.body);
-  db(`INSERT INTO owner(shop_name,address,lat,lng,phone) VALUES ("${req.body.shop_name}","${req.body.address}","${req.body.lat}","${req.body.lng}","${req.body.phone}")`)
+
+  db(`INSERT INTO owner(username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`)
+
 
   .then(results => {
      
@@ -55,7 +65,7 @@ router.post("/",function (req, res, next) {
   .catch(err=>res.status(404).send(err))
 });
 
-//insert menu
+//insert menu KIV
 router.post("/owner/:id",function (req, res, next) {
   //console.log(`${req.input.item},${req.input.price}`, "in the api")
   db(`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`)
@@ -67,7 +77,7 @@ router.post("/owner/:id",function (req, res, next) {
 })
 
 
-//delete menu helper func 
+//delete menu helper func KIV
 const deleteOne = (owner_id,req,res,next) => {
   db(`DELETE FROM owner_menu WHERE owner_id=${owner_id}`)
   .then(results => {
@@ -78,9 +88,9 @@ const deleteOne = (owner_id,req,res,next) => {
 }
 
 //delete a shop
-router.delete("/owner/:id",function(req, res, next) {
+router.delete("/:id",function(req, res, next) {
   deleteOne(req.params.id);
-  db(`DELETE FROM owner WHERE id=${req.params.id}`)
+  db(`DELETE FROM owner WHERE id=${req.params.owner_id}`)
   .then(results => {
     res.send(results.data);
     res.send("Delete succesful")
