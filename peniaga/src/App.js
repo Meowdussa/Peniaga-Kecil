@@ -23,8 +23,7 @@ function App() {
       <img src="https://user-images.githubusercontent.com/86279819/132444881-5d557210-69d1-4c8f-81ef-e91a87e342b7.png" width="400" height="150" class="center"/>
       <div className="App">
         {/* <OwnerView /> */}
-        <div>
-          <Search placeholder="Search for a shop"/>
+        
         <div>
           <Router>
             <div className="linkers">
@@ -57,7 +56,7 @@ function App() {
 
    {(isUser)? <UserView/>: <OwnerView/>} */}
         </div>
-      </div>
+      
       </div> 
     </body>
   );

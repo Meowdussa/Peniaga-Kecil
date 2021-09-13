@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+let axios = require("axios");
+
 
 function Search({ placeholder, data }) {
-	const [filteredData, setfilteredData] = useState([]);
+	const [filteredData, setfilteredData] = useState([]);//filtered data from search
+
+	useEffect(()=>{
+		axios.get(`http://localhost:5000/`).then((response)=>{
+			
+		})
+	})
+
 
 	const handleFilter = (event) => {
+		event.preventDefault();
 		const searchWord = event.target.value; //the word user enter
 		const newFilter = data.filter((value) => {
 			//will loop thru the data set and store the data in the value
@@ -30,7 +40,7 @@ function Search({ placeholder, data }) {
 				</div>
 				{filteredData.length != 0 && (
 					<div className="dataResult">
-						{filteredData.map((value, key) => {
+						{filteredData.map((value, key) => { //return the data that has been filtered
 							return (
 								<a className="dataItem">
 									<p>{value.address}</p>
