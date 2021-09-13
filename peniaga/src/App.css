@@ -1,14 +1,9 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-
-body{
-  background-color: rgb(255, 168, 251);
-
+  /* margin-top: 100px; */
 }
 
 .App-link {
@@ -20,4 +15,33 @@ body{
   justify-content: center;
   align-items: center;
  
+}
+/* 
+------------------------------------------------- */
+body {
+  background-color: #fec5bb;
+}
+.owner-btn {
+  font-family:monospace;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.owner-btn:hover{
+  opacity: 0.5;
+}
+.user-btn {
+  font-family: monospace;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.user-btn:hover {
+  opacity: 0.5;
+}
+.linkers{
+  display: flex;
+  justify-content: center;
+  /* margin: 5vw; */
+
 }
