@@ -32,7 +32,7 @@ const Owner = () => {
 
   const getOwner = () => {
     axios
-      .get(`http://localhost:5000/`, owner)
+      .get(`http://localhost:5000/ownerapi`, owner)
       .then((response) => {
         setOwner(response.data);
       })
@@ -42,7 +42,7 @@ const Owner = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/`).then((response) => {
+    axios.get(`http://localhost:5000/ownerapi`).then((response) => {
       setOwner(response.data);
 
       setInput(response.data);
@@ -66,7 +66,7 @@ const Owner = () => {
   // delete a shop
   const deleteOwner = (id) => {
     axios
-      .delete(`http://localhost:5000/owner/${id}`, input)
+      .delete(`http://localhost:5000/ownerapi/${id}`, input)
       .then((response) => {
         console.log(response.data);
 
