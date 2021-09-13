@@ -19,10 +19,10 @@ con.connect(function(err) {
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists owner; CREATE TABLE owner(id INT NOT NULL AUTO_INCREMENT, shop_name VARCHAR(40) not null, address VARCHAR(40) not null,PRIMARY KEY (id));";
+    "DROP TABLE if exists owner; DROP TABLE if exists menu; DROP TABLE if exists item; CREATE TABLE owner (owner_id INT NOT NULL AUTO_INCREMENT, username VARCHAR(15), password VARCHAR(15), shop_name VARCHAR(40) not null, phone VARCHAR(15), address VARCHAR(100) not null, city VARCHAR(40), PRIMARY KEY (owner_id)); CREATE TABLE menu(menu_id INT NOT NULL AUTO_INCREMENT, owner_id INT NOT NULL, PRIMARY KEY (menu_id), FOREIGN KEY (owner_id) REFERENCES owner(owner_id)); CREATE TABLE item (item_id INT NOT NULL AUTO_INCREMENT, item_image BLOB, item_name TEXT(255), menu_id INT NOT NULL, PRIMARY KEY (item_id), FOREIGN KEY (menu_id) REFERENCES menu(menu_id));";
   con.query(sql, function(err, result) {
     if (err) throw err;
-    console.log("Table creation `owner` was successful!");
+    console.log("Table creation `owner, menu, item` were successful!");
 
     console.log("Closing...");
   });
