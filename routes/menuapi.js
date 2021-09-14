@@ -21,7 +21,7 @@ const getAllMenu = (req, res) => {
 
 // GET one menu
 router.get("/:id", function(req, res){
-  db(`SELECT * FROM menu where id=${req.params.id};`)
+  db(`SELECT * FROM item INNER JOIN menu ON menu.menu_id=item.menu_id INNER JOIN owner ON menu.owner_id=owner.owner_id WHERE menu.menu_id=${req.params.id};`)
     .then((results) => {
       res.send(results.data);
     })
@@ -31,7 +31,7 @@ router.get("/:id", function(req, res){
 // INSERT a new menu
 router.post("/", function(req, res) {
   db(
-    `INSERT INTO menu ( ) VALUES ("${req.body.name}","${req.body.phone}","${req.body.birthday}");`
+    `INSERT INTO menu (menu_name, owner_id) VALUES ("${req.body.menu_name}",${req.body.owner_id});`
   )
     .then(() => {
       getAllMenu(req, res);
@@ -42,10 +42,11 @@ router.post("/", function(req, res) {
 
 // DELETE a menu
 router.delete("/:id", function(req, res, next) {
-  db(`DELETE FROM menu WHERE id=${req.params.id};`)
+  db(`DELETE FROM menu WHERE id=${req.params.menu_id};`)
     .then(() => {
       getAllMenu(req, res);
     })
     .catch(err => res.status(404).send(err));
 });
+
 module.exports = router;
