@@ -53,32 +53,24 @@ router.get("/menu/:id", function (req, res, next) {
 });
 
 // insert a new shop 1st step -
-router.post("/", function (req, res, next) {
-	console.log("testing the api")
-	console.log("inside body",req.body);
-	db(
-		`INSERT INTO owner(username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`//use async await
-	)
-		.then((results) => {
-			//add menu items //helper func to add menu
-
-			allOwners(req, res);
-		})
-		.catch((err) => res.status(404).send(err));
+router.post("/",function (req, res, next) {
+  db(`INSERT INTO owner (username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`)
+  .then(() => {
+    allOwners(req,res);
+  })
+  .catch(err=>res.status(404).send(err))
 });
 
 //insert menu KIV
-router.post("/owner/:id", function (req, res, next) {
-	console.log(`${req.input.item},${req.input.price}`, "in the api")
+router.post("/owner/:id",function (req, res, next) {
+  //console.log(`${req.input.item},${req.input.price}`, "in the api")
+  db(`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`)
+  .then(results => {
+    allOwners(req,res);
+  })
+  .catch(err=>res.status(404).send(err))
+})
 
-	db(
-		`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`
-	)
-		.then((results) => {
-			allOwners(req, res);
-		})
-		.catch((err) => res.status(404).send(err));
-});
 
 //delete menu helper func KIV
 const deleteOne = (owner_id, req, res, next) => {

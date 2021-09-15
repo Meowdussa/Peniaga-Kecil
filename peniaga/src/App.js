@@ -61,8 +61,6 @@ function App() {
    {(isUser)? <UserView/>: <OwnerView/>} */}
         </div>    
       </div> 
-      
-
     </body>
   );
 }
