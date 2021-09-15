@@ -54,10 +54,10 @@ router.get("/menu/:id", function (req, res, next) {
 
 // insert a new shop 1st step -
 router.post("/", function (req, res, next) {
-	console.log(req.body);
-
+	console.log("testing the api")
+	console.log("inside body",req.body);
 	db(
-		`INSERT INTO owner(username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`
+		`INSERT INTO owner(username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`//use async await
 	)
 		.then((results) => {
 			//add menu items //helper func to add menu
@@ -69,7 +69,8 @@ router.post("/", function (req, res, next) {
 
 //insert menu KIV
 router.post("/owner/:id", function (req, res, next) {
-	//console.log(`${req.input.item},${req.input.price}`, "in the api")
+	console.log(`${req.input.item},${req.input.price}`, "in the api")
+
 	db(
 		`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`
 	)

@@ -30,6 +30,7 @@ router.get("/:id", function(req, res){
 
 // INSERT a new menu
 router.post("/", function(req, res) {
+  console.log("posting menu")
   db(
     `INSERT INTO menu ( ) VALUES ("${req.body.name}","${req.body.phone}","${req.body.birthday}");`
   )
