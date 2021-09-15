@@ -1,6 +1,3 @@
-// import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
-// import React, { useState, useEffect } from "react";
 import "./App.css";
 import OwnerView from "./OwnerView";
 import UserView from "./UserView";
@@ -8,21 +5,26 @@ import React, { useState } from "react";
 import Search from "./components/Search";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Usermap from "./components/Usermap";
+import Popup from "./components/Popup";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
   //const [isOwner, setIsOwner]= useState([]);
+  const [register, setRegister] = useState(false);
   const [isUser, setisUser] = useState(true);
-  const handleChangeView = (isUser) => {
+/*   const handleChangeView = (isUser) => {
     setisUser(isUser);
-  };
+  }; */
 
   return (
     <body>
       <img src="https://user-images.githubusercontent.com/86279819/132444881-5d557210-69d1-4c8f-81ef-e91a87e342b7.png" width="400" height="150" class="center"/>
       <div className="App">
         {/* <OwnerView /> */}
-
+        <div>
+          <button onClick={() => setRegister(true)}>Login</button>
+          <Popup trigger={register} setTrigger={setRegister}></Popup>
+        </div>
         <div>
           <Router>
             <div className="linkers">
@@ -48,6 +50,8 @@ function App() {
             <Route path="/user" exact component={Usermap} />
             <Route path="/owner" exact component={OwnerView} />
             <Route path="/" exact component={Search} />
+            <Route path="/register" exact component={Popup} />
+
 
           </Router>
           {/* {(isUser)? 
@@ -57,7 +61,7 @@ function App() {
    {(isUser)? <UserView/>: <OwnerView/>} */}
         </div>    
       </div> 
-      </div>
+      
 
     </body>
   );
