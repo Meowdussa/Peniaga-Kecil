@@ -92,6 +92,19 @@ router.delete("/:id", function (req, res, next) {
 		})
 		.catch((err) => res.status(500).send(err));
 });
+
+//insert login
+router.post("/login", function (req, res, next) {
+	db(`SELECT * FROM owner WHERE username='${req.body.username}' AND password='${req.body.password}'`)
+		.then((results) => {
+			if(results){
+			res.send(results.data);
+			} else {
+				res.send({message:"Wrong username/password combination"})
+			}
+		})
+		.catch((err) => res.status(500).send(err));
+});
 module.exports = router;
 
 /* CREATE TABLE owner_menu(item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,item VARCHAR(250),price VARCHAR(250),owner_id INT,FOREIGN KEY (owner_id)REFERENCES owner(id)); */

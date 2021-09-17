@@ -47,7 +47,7 @@ let [error, setError] = useState(null);
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-         
+       <h1>Register</h1>
        <label>Username</label>
       <input {...register("username", {
           required: true,

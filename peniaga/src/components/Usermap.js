@@ -9,7 +9,7 @@ const opencage = require('opencage-api-client');
 //NY {"lat": 40.730610, "lng": -73.935242}
 //JITRA {"lat": 6.2644, "lng": 100.4202}                      
 
-const OCD_API_KEY = "c02f98f7a4a1421da696fbfcd45d000a"; 
+const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY; //"c02f98f7a4a1421da696fbfcd45d000a";
 
 
  function Usermap (props) {
