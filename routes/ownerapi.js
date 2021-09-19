@@ -5,11 +5,7 @@ const db = require("../model/helper");
 
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
-// amogh use jwt here
-// const {sign, verify} = require("jsonwebtoken");
-// const SECRET = process.env.JWT_SECRET;
-// pedro import jwt token
-const {createTokens} = require('./JWT');
+const {createTokens,validateToken} = require('./JWT');
 const app = express();
 
 app.use(express.json());
@@ -33,8 +29,8 @@ const allOwners = (req, res, next) => {
 };
 
 //get one owner
-router.get("/:id", function (req, res, next) {
-  db(`SELECT shop_name,address FROM owner WHERE owner_id=${req.params.id};`)
+router.get("/id/:id", function (req, res, next) {
+  db(`SELECT shop_name,address,phone FROM owner WHERE owner_id=${req.params.id};`)
     .then((results) => {
       // allOwners(req, res);
       res.send(results.data);
@@ -43,7 +39,7 @@ router.get("/:id", function (req, res, next) {
 });
 
 // get city
-router.get("/:id", function (req, res, next) {
+router.get("/city/:id", function (req, res, next) {
   db(`SELECT city FROM owner WHERE owner_id=${req.params.id};`)
     .then((results) => {
       // allOwners(req, res);
@@ -51,41 +47,6 @@ router.get("/:id", function (req, res, next) {
     })
     .catch((err) => res.status(500).send(err));
 });
-
-//get one shop menu KIV
-router.get("/menu/:id", function (req, res, next) {
-  db(
-    `SELECT owner.id,item_id,owner_menu.item,owner_menu.price FROM owner_menu INNER JOIN owner ON owner.id=owner_menu.owner_id WHERE owner.id=${req.params.id};`
-  )
-    .then((results) => {
-      res.send(results.data);
-      //creat a func allfooditems inside it send the  id, the req, and res
-      //allfooditems give all that matched the owner id
-    })
-    .catch((err) => res.status(500).send(err));
-});
-
-//insert menu KIV
-router.post("/owner/:id", function (req, res, next) {
-  //console.log(`${req.input.item},${req.input.price}`, "in the api")
-  db(
-    `INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`
-  )
-    .then((results) => {
-      res.send(results.data)
-    })
-    .catch((err) => res.status(404).send(err));
-});
-
-//delete menu helper func KIV
-const deleteOne = (owner_id, req, res, next) => {
-  db(`DELETE FROM owner_menu WHERE owner_id=${id}`)
-    .then((results) => {
-      res.send(results.data);
-      res.send("Delete succesful");
-    })
-    .catch((err) => res.status(500).send(err));
-};
 
 //delete a shop
 router.delete("/:id", function (req, res, next) {
@@ -131,8 +92,12 @@ router.post("/login", async (req, res) => {
           const accessToken = createTokens(user)
 
           //cookie expired after 30days
-          res.cookie("access-token", accessToken, { maxAge: 60*60*24*30*1000,})
-          res.send("LOG MASUK")
+          res.cookie("access-token", accessToken, { 
+            maxAge: 60*60*24*30*1000,
+            // to prevent cookies being accessed
+            httpOnly: true
+          })
+          res.send(accessToken);
         }
       })
 
@@ -157,7 +122,9 @@ router.post("/login", async (req, res) => {
 });
 
 //profile
-router.post("/profile", function (req, res, next) {});
+router.get("/profile", validateToken, (req, res) => {
+  res.send("profile");
+});
 module.exports = router;
 
 /* CREATE TABLE owner_menu(item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,item VARCHAR(250),price VARCHAR(250),owner_id INT,FOREIGN KEY (owner_id)REFERENCES owner(id)); */

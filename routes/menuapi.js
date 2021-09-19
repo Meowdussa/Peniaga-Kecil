@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require("../model/helper");
+const { validateToken } = require('./JWT');
 
 /* GET menu listing. */
 router.get('/', function(req, res, next) {
@@ -29,21 +30,21 @@ router.get("/:id", function(req, res){
 })
 
 // INSERT a new menu
-router.post("/", function(req, res) {
+router.post("/", validateToken, async (req, res) => {
   console.log("posting menu")
-  db(
+  await db(
     `INSERT INTO menu (menu_name, owner_id) VALUES ("${req.body.menu_name}",${req.body.owner_id});`
   )
-    .then(() => {
-      getAllMenu(req, res);
+    .then((results) => {
+      res.send(results.data);
     })
     .catch(err => res.status(404).send(err));
 });
 
 
 // DELETE a menu
-router.delete("/:id", function(req, res, next) {
-  db(`DELETE FROM menu WHERE id=${req.params.menu_id};`)
+router.delete("/:id", validateToken, async (req, res) => {
+  await db(`DELETE FROM menu WHERE menu_id=${req.params.id};`)
     .then(() => {
       getAllMenu(req, res);
     })

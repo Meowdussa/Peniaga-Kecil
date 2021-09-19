@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loginStatus, setLoginStatus] = useState("");
+
+  let history = useHistory();
 
   const isLogin = () => {
     axios
@@ -17,13 +20,18 @@ function Login() {
       .then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
+          console.log(response.data.message);
         } else {
-          setLoginStatus(`Selamat datang!`);
+          setLoginStatus("Selamat datang!");
+          console.log("LOGGED IN");
+          sessionStorage.setItem("accessToken", response.data);
+          history.push("/");
         }
       })
       .catch((error) => {
         setError("Login error");
         setLoginStatus(`Nama pengguna/kata laluan salah!`);
+        console.log("WRONG USERNAME/PASSWORD");
       });
   };
 
