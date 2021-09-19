@@ -35,7 +35,7 @@ function App() {
           <Router>
             <div className="linkers">
               <div className="signup-btn">
-                <Link to="/">Sign up</Link>
+                <Link to="/">Daftar</Link>
               </div>
               <div className="user-btn">
                 <Link to="/shop">

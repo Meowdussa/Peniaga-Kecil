@@ -10,13 +10,14 @@ const {register,handleSubmit,watch, formState: { errors, isDirty, isSubmitting, 
 const [input,setInput] = useState({});
 const [owner, setOwner] = useState([]);
 let [error, setError] = useState(null);
+const [regStatus, setRegStatus] = useState("");
+
   const addOwner = (data) => {
    console.log("printing input",data);
     axios
       .post(`http://localhost:5000/ownerapi`, data)
       .then((response) => {
-        
-        console.log(response.data);
+        setRegStatus(response.data.message);
         console.log("Shop added");
       })
       .catch((error) => {
@@ -47,50 +48,51 @@ let [error, setError] = useState(null);
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-       <h1>Register</h1>
-       <label>Username</label>
+       <h1>Daftar</h1>
+       <label>Nama Pengguna</label>
       <input {...register("username", {
           required: true,
           maxLength: 15,
         })}
       />
-      {errors?.username?.type === "required" && <p>This field is required</p>}
+      {errors?.username?.type === "required" && <p>Sila isikan maklumat</p>}
       {errors?.username?.type === "maxLength" && (
-        <p>Username cannot exceed 15 characters</p>
+        <p>Nama pengguna tidak boleh melebihi 15 aksara</p>
       )}
      {/*  <input type="text" name="username" onChange={(e) => handleChange(e)}/> */}
-      <label>Password</label>
+      <label>Kata Laluan</label>
       <input {...register("password", {
           required: true,
           maxLength: 15,
         })}/>
-      {errors?.password?.type === "required" && <p>This field is required</p>}
+      {errors?.password?.type === "required" && <p>Sila isikan maklumat</p>}
        {errors?.password?.type === "maxLength" && (
-        <p>Password cannot exceed 15 characters</p>
+        <p>Kata laluan tidak boleh melebihi 15 aksara</p>
       )}
-      <label>Shop Name</label>
+      <label>Nama Kedai</label>
       <input 
       {...register("shop_name", {
         required: true,
         maxLength: 15,
         })} />
-      {errors?.shop_name?.type === "required" && <p>This field is required</p>}
-       <label>Phone Number</label>
+      {errors?.shop_name?.type === "required" && <p>Sila isikan maklumat</p>}
+       <label>Nombor Telefon</label>
       <input 
       {...register("phone", {required: true, maxLength:12})} />
-      {errors?.phone?.type === "required" && <p>This field is required</p>}
+      {errors?.phone?.type === "required" && <p>Sila isikan maklumat</p>}
       {errors?.phone?.type === "maxLength" && (
-        <p>Phone number cannot exceed 12 characters</p>
+        <p>Nombor telefon tidak boleh melebihi 12 aksara</p>
       )}
-      <label>City</label>
+      <label>Bandar</label>
       <input 
       {...register("city", { required: true})} />
-      {errors?.city?.type === "required" && <p>This field is required</p>}
-      <label>Address</label>
+      {errors?.city?.type === "required" && <p>Sila isikan maklumat</p>}
+      <label>Alamat</label>
       <textarea 
       {...register("address", { required: true})} />
-      {errors?.address?.type === "required" && <p>This field is required</p>}
+      {errors?.address?.type === "required" && <p>Sila isikan maklumat</p>}
       <input type="submit" />
+      <h1>{regStatus}</h1>
     </form>
   );
 }

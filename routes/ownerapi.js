@@ -2,109 +2,162 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
+
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+// amogh use jwt here
+// const {sign, verify} = require("jsonwebtoken");
+// const SECRET = process.env.JWT_SECRET;
+// pedro import jwt token
+const {createTokens} = require('./JWT');
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+
 /* GET all owner listing. */
 router.get("/", function (req, res, next) {
-	db("SELECT * FROM owner")
-		.then((results) => {
-			res.send(results.data);
-		})
-		.catch((err) => res.status(500).send(err));
+  db("SELECT * FROM owner")
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
 });
 
 const allOwners = (req, res, next) => {
-	db("SELECT * FROM owner")
-		.then((results) => {
-			res.send(results.data);
-		})
-		.catch((err) => res.status(500).send(err));
+  db("SELECT * FROM owner")
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
 };
 
 //get one owner
 router.get("/:id", function (req, res, next) {
-	db(`SELECT shop_name,address FROM owner WHERE id=${req.params.owner_id};`)
-		.then((results) => {
-			allOwners(req, res);
-			// res.send(results.data);
-		})
-		.catch((err) => res.status(500).send(err));
+  db(`SELECT shop_name,address FROM owner WHERE owner_id=${req.params.id};`)
+    .then((results) => {
+      // allOwners(req, res);
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
 });
 
 // get city
 router.get("/:id", function (req, res, next) {
-	db(`SELECT city FROM owner WHERE id=${req.params.owner_id};`)
-		.then((results) => {
-			allOwners(req, res);
-			//res.send(results.data);
-		})
-		.catch((err) => res.status(500).send(err));
+  db(`SELECT city FROM owner WHERE owner_id=${req.params.id};`)
+    .then((results) => {
+      // allOwners(req, res);
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
 });
 
 //get one shop menu KIV
 router.get("/menu/:id", function (req, res, next) {
-	db(
-		`SELECT owner.id,item_id,owner_menu.item,owner_menu.price FROM owner_menu INNER JOIN owner ON owner.id=owner_menu.owner_id WHERE owner.id=${req.params.id};`
-	)
-		.then((results) => {
-			res.send(results.data);
-			//creat a func allfooditems inside it send the  id, the req, and res
-			//allfooditems give all that matched the owner id
-		})
-		.catch((err) => res.status(500).send(err));
-});
-
-// insert a new shop 1st step -
-router.post("/",function (req, res, next) {
-  db(`INSERT INTO owner (username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${req.body.password}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`)
-  .then(() => {
-    allOwners(req,res);
-  })
-  .catch(err=>res.status(404).send(err))
+  db(
+    `SELECT owner.id,item_id,owner_menu.item,owner_menu.price FROM owner_menu INNER JOIN owner ON owner.id=owner_menu.owner_id WHERE owner.id=${req.params.id};`
+  )
+    .then((results) => {
+      res.send(results.data);
+      //creat a func allfooditems inside it send the  id, the req, and res
+      //allfooditems give all that matched the owner id
+    })
+    .catch((err) => res.status(500).send(err));
 });
 
 //insert menu KIV
-router.post("/owner/:id",function (req, res, next) {
+router.post("/owner/:id", function (req, res, next) {
   //console.log(`${req.input.item},${req.input.price}`, "in the api")
-  db(`INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`)
-  .then(results => {
-    allOwners(req,res);
-  })
-  .catch(err=>res.status(404).send(err))
-})
-
+  db(
+    `INSERT INTO owner_menu(item,price,owner_id)VALUES('${req.body.item}','${req.body.price}',${req.params.id})`
+  )
+    .then((results) => {
+      res.send(results.data)
+    })
+    .catch((err) => res.status(404).send(err));
+});
 
 //delete menu helper func KIV
 const deleteOne = (owner_id, req, res, next) => {
-	db(`DELETE FROM owner_menu WHERE owner_id=${owner_id}`)
-		.then((results) => {
-			res.send(results.data);
-			res.send("Delete succesful");
-		})
-		.catch((err) => res.status(500).send(err));
+  db(`DELETE FROM owner_menu WHERE owner_id=${id}`)
+    .then((results) => {
+      res.send(results.data);
+      res.send("Delete succesful");
+    })
+    .catch((err) => res.status(500).send(err));
 };
 
 //delete a shop
 router.delete("/:id", function (req, res, next) {
-	deleteOne(req.params.id);
-	db(`DELETE FROM owner WHERE id=${req.params.owner_id}`)
-		.then((results) => {
-			res.send(results.data);
-			res.send("Delete succesful");
-		})
-		.catch((err) => res.status(500).send(err));
+  db(`DELETE FROM owner WHERE owner_id=${req.params.id}`)
+    .then((results) => {
+      res.send(results.data);
+      res.send("Delete succesful");
+    })
+    .catch((err) => res.status(500).send(err));
 });
 
-//insert login
-router.post("/login", function (req, res, next) {
-	db(`SELECT * FROM owner WHERE username='${req.body.username}' AND password='${req.body.password}'`)
-		.then((results) => {
-			if(results){
-			res.send(results.data);
-			} else {
-				res.send({message:"Wrong username/password combination"})
-			}
-		})
-		.catch((err) => res.status(500).send(err));
+// register
+router.post("/", async (req, res) => {
+  try {
+    const hash = await bcrypt.hash(req.body.password, 10);
+
+    await db(
+      `INSERT INTO owner (username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${hash}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`
+    );
+    res.send({ message: "Berjaya daftar!" });
+    allOwners(req, res);
+  } catch (err) {
+    res.status(404).send(err);
+  }
 });
+
+//login
+router.post("/login", async (req, res) => {
+  try {
+   const results = await db(
+      `SELECT * FROM owner WHERE username='${req.body.username}'`);
+  
+    const user = results.data[0];
+
+    //pedro
+      if(!user) res.status(400).send({ message: "Pengguna tidak wujud" });
+
+      
+      bcrypt.compare(req.body.password, user.password).then((match) => {
+        if(!match) {
+          res.status(400).send({message: "Nama pengguna/Kata laluan salah!"});
+        } else {
+          const accessToken = createTokens(user)
+
+          //cookie expired after 30days
+          res.cookie("access-token", accessToken, { maxAge: 60*60*24*30*1000,})
+          res.send("LOG MASUK")
+        }
+      })
+
+      //amogh
+
+      // if (user) {
+      //   const user_id = user.id;
+        
+      //   const correctPassword = await bcrypt.compare(req.body.password, user.password);
+
+      //   if (!correctPassword) throw new Error("Nama pengguna/Kata laluan salah!");
+
+      // var token = jwt.sign({user_id}, SECRET);
+      // res.send({message: "Berjaya log masuk, token:", token})
+
+      // } else {
+      //   throw new Error("Pengguna tidak wujud");
+      // }
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+//profile
+router.post("/profile", function (req, res, next) {});
 module.exports = router;
 
 /* CREATE TABLE owner_menu(item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,item VARCHAR(250),price VARCHAR(250),owner_id INT,FOREIGN KEY (owner_id)REFERENCES owner(id)); */
