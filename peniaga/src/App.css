@@ -14,18 +14,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 /* 
 ------------------------------------------------- */
 body {
-  background-color: #fec5bb;
+  background-color: #007F5F;
 }
 .owner-btn {
   font-family:monospace;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  background-color: #007F5F;
+  border-radius: 20px;
+  width: auto;
+  color: aliceblue;
 }
 .owner-btn:hover{
   opacity: 0.5;
@@ -39,9 +42,21 @@ body {
 .user-btn:hover {
   opacity: 0.5;
 }
-.linkers{
+.home-btn{
+  font-family: monospace;
+  padding: 10px;
+}
+.home-btn:hover {
+  opacity: 0.5;
+}
+.signup-btn{
+  font-family: monospace;
+  padding: 10px;
+}
+.signup-btn:hover {
+  opacity: 0.5;
+}
+/* .linkers{
   display: flex;
   justify-content: center;
-  /* margin: 5vw; */
-
-}
+} */
