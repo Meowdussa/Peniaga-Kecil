@@ -1,0 +1,13 @@
+.login {
+    width: 40vw;
+}
+.login-btn {
+    color: rgb(133, 59, 59);
+    background-color: #a1e1cf;
+    border: 0px;
+    width: 40vw;
+}
+.login-btn:hover{
+    background-color: white;
+    opacity: 0.5;
+}

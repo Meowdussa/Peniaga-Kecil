@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Card() {
+const Ownerprofile = () => {
     return (
         <div>
-            Card
         </div>
     )
 }
+
+export default Ownerprofile

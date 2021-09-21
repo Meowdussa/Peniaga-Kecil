@@ -15,13 +15,13 @@ body {
   }
   
   form {
-    background: #8092f8;
-    max-width: 400px;
-    margin: 0 auto;
-    max-width: 500px;
+    /* background: #8092f8; */
+    /* max-width: 400px; */
+    /* margin: 0 auto; */
+    width: 40vw;
     padding: 20px;
-    border: 1px;
-    border-radius: 20px;
+    /* border: 1px; */
+    /* border-radius: 20px; */
   }
   
   p {
@@ -96,11 +96,6 @@ body {
     -webkit-appearance: none;
   }
   
-  .App {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
   button[type="button"] {
     display: block;
     appearance: none;
@@ -136,4 +131,12 @@ body {
     margin-bottom: 10px;
     font-size: 20px;
     height: 50vh;
+  }
+
+  #sub-btn{
+    background-color: #a1e1cf;
+  }
+  #sub-btn:hover{
+    background-color: white;
+    opacity: 0.5;
   }

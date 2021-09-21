@@ -8,6 +8,7 @@ import Usermap from "./components/Usermap";
 import Registerform from "./components/Registerform";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Ownerprofile from "./Ownerprofile";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -19,13 +20,13 @@ function App() {
   }; */
 
   return (
-    <body>
+    <body style={{ backgroundColor: "#caffbf" }}>
       <a href="/">
         <img
-          src="https://user-images.githubusercontent.com/86279819/132444881-5d557210-69d1-4c8f-81ef-e91a87e342b7.png"
-          width="400"
-          height="150"
-          className="center"
+          src="https://user-images.githubusercontent.com/86279819/134089191-85f892dc-2c57-492f-9d7d-edfe312b9797.png"
+          // width="400"
+          // height="150"
+          // className="center"
         />
       </a>
       <div className="App">
@@ -34,11 +35,18 @@ function App() {
           {/* <button onClick={() => setRegister(true)}>Sign Up</button>
           <Popup trigger={register} setTrigger={setRegister}></Popup> */}
         </div>
-        <div>
+        <div className="app-content">
           <Router>
             <div className="linkers">
               <div className="home-btn">
-                <Link to="/">Halaman Utama</Link>
+                <Link to="/">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/619/619032.png"
+                    height="50"
+                    width="50"
+                  />
+                  <div>Halaman Utama</div>
+                </Link>
               </div>
               <div className="user-btn">
                 <Link to="/shop">
@@ -50,9 +58,19 @@ function App() {
                   <div>Shop</div>
                 </Link>
               </div>
+              <div className="profile-btn">
+                <Link to="/profile">
+                  <img
+                    src="https://image.flaticon.com/icons/png/512/3579/3579080.png"
+                    height="50"
+                    width="50"
+                  />
+                  <div>Profile</div>
+                </Link>
+              </div>
             </div>
             <div className="owner-btn">
-              <Link to="/owner">
+              <Link to="/logmasuk">
                 <div>Log Masuk</div>
               </Link>
             </div>
@@ -60,10 +78,12 @@ function App() {
               <Link to="/daftar">Daftar</Link>
             </div>
             <Route path="/user" exact component={Usermap} />
-            <Route path="/owner" exact component={Login} />
+            <Route path="/logmasuk" exact component={Login} />
             <Route path="/daftar" exact component={Registerform} />
             <Route path="/" exact component={Home} />
+            <Route path="/profile" exact component={Ownerprofile} />
           </Router>
+          <div className="region"></div>
           {/* {(isUser)? 
     <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}
     </div>
