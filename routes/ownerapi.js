@@ -49,7 +49,7 @@ router.get("/city/:id", function (req, res, next) {
 });
 
 //delete a shop
-router.delete("/:id", function (req, res, next) {
+router.delete("/id/:id", function (req, res, next) {
   db(`DELETE FROM owner WHERE owner_id=${req.params.id}`)
     .then((results) => {
       res.send(results.data);

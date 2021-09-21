@@ -8,6 +8,7 @@ import Registerform from "./components/Registerform";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Ownerprofile from "./Ownerprofile";
+import Bintulu from "./components/Bintulu";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -81,6 +82,7 @@ function App() {
             <Route path="/daftar" exact component={Registerform} />
             <Route path="/" exact component={Home} />
             <Route path="/profile" exact component={Ownerprofile} />
+            <Route path="/bintulu" exact component={Bintulu}/>
           </Router>
           <div className="region"></div>
           {/* {(isUser)? 
