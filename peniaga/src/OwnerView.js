@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 // import Container from '@material-ui/core/Container';
 import React, { useState, useEffect } from "react";
 import AddMenu from "./Addmenu";
-import Ownermap from "./components/Ownermap";
+
 import "./OwnerView.css";
 //import UserView from "./UserView";
 let axios = require("axios");

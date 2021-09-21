@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import "./Login.css"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -25,7 +26,7 @@ function Login() {
           setLoginStatus("Selamat datang!");
           console.log("LOGGED IN");
           sessionStorage.setItem("accessToken", response.data);
-          history.push("/");
+          history.push("/profile");
         }
       })
       .catch((error) => {
@@ -36,7 +37,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="login">
       <h1>Log Masuk</h1>
       <label>Nama Pengguna</label>
       <input
@@ -52,7 +53,7 @@ function Login() {
           setPassword(e.target.value);
         }}
       />
-      <button onClick={isLogin}>LOG MASUK</button>
+      <button className="login-btn" onClick={isLogin}>LOG MASUK</button>
 
       <h1>{loginStatus}</h1>
     </div>

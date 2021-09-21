@@ -67,7 +67,7 @@ router.post("/", async (req, res) => {
       `INSERT INTO owner (username, password, shop_name, phone, address, city) VALUES ("${req.body.username}","${hash}","${req.body.shop_name}","${req.body.phone}","${req.body.address}","${req.body.city}")`
     );
     res.send({ message: "Berjaya daftar!" });
-    allOwners(req, res);
+    // res.send(results.data);
   } catch (err) {
     res.status(404).send(err);
   }
