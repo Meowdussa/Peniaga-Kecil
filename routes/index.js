@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer');
+const cors = require('cors')
 
 /* GET home page. */
 router.get("/", (req, res) => {

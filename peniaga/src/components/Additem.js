@@ -52,9 +52,10 @@ function Additem(props) {
 
 	const addItem = () => {
 		axios
-			.post(`http://localhost:5000/itemapi`)
+			.post(`http://localhost:5000/itemapi`,input )
 			.then((response) => {
                 console.log(response)
+				setInput(response);
 				//console.log("Item added");
 			})
 			.catch((error) => {
@@ -106,9 +107,9 @@ function Additem(props) {
 					</div>
 					<div>
 						<OutlinedInput
-							id="outlined-adornment-weight"
+							id="outlined-adornment"
 							value={values.RM}
-							onChange={handleChange("weight")}
+							onChange={handleChange()}
 							endAdornment={<InputAdornment position="end">RM</InputAdornment>}
 							aria-describedby="outlined-weight-helper-text"
 							inputProps={{
