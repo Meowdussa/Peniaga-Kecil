@@ -9,6 +9,8 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Ownerprofile from "./Ownerprofile";
 import Bintulu from "./components/Bintulu";
+import Jitra from "./components/Jitra";
+import Kl from "./components/Kl";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -83,6 +85,8 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/profile" exact component={Ownerprofile} />
             <Route path="/bintulu" exact component={Bintulu}/>
+            <Route path="/jitra" exact component={Jitra}/>
+            <Route path="/kl" exact component={Kl}/>
           </Router>
           <div className="region"></div>
           {/* {(isUser)? 
