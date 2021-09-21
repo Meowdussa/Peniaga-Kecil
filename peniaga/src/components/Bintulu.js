@@ -31,7 +31,7 @@ const Bintulu = () => {
         console.log("Error getting shop");
       });
   };
-  
+
   return (
     <div>
       <h1>Support small business in Bintulu</h1>
@@ -45,7 +45,7 @@ const Bintulu = () => {
                   <h5>{e.address}</h5>
                   <h5>
                     <PhoneAndroidIcon/>
-                    <a href={`https://wa.me/${e.phone}`}>{e.phone}</a>
+                    <a href={`https://wa.me/${e.phone}`} target="blank">{e.phone}</a>
                   </h5>
                 </Item>
               </Grid>

@@ -4,7 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import "./Regioncard.css"
+import { Link } from 'react-router-dom';
+import "./Regioncard.css";
 
 const Regioncard = () => {
     return (
@@ -50,12 +51,14 @@ const Regioncard = () => {
         <div className="bintulu">
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea style={{backgroundColor: "aliceblue"}}>
+        <Link to='/bintulu'>
           <CardMedia
             component="img"
             height="200"
             image="https://user-images.githubusercontent.com/86279819/133969975-d2856786-f370-45f6-9bce-e5e807149fcd.jpg"
             alt="Bintulu"
           />
+          </Link>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" style={{color: "black"}}>
               Bintulu
