@@ -5,15 +5,14 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import axios from "axios";
 
 
 function Additem(props) {
-	let axios = require("axios");
 	let [itemerror, setItemerror] = useState(null);
 	let [menu, setMenu] = useState([]);
 	let [input, setInput] = useState({});
 	let [error, setError] = useState(null);
-    const [values, setValues] = useState({price:''});
 
 	/* const addMenu = (ownerID) => {
 		console.log(input, "in the front end");
@@ -46,9 +45,14 @@ function Additem(props) {
 		setInput({ ...input, [e.target.name]: e.target.value });
 	}; */
 
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
+    // const handleChange = (prop) => (event) => {
+    //     setValues({ ...values, [prop]: event.target.value });
+    //   };
+
+	const handleChange = (event) => {
+		const value = event.target.value;
+		setInput({ ...input, [event.target.name]: value });
+	  };
 
 	const addItem = () => {
 		axios
@@ -59,21 +63,20 @@ function Additem(props) {
 				//console.log("Item added");
 			})
 			.catch((error) => {
-				setItemerror("Error in adding new item");
+				setError("Error in adding new item");
 			});
 	};
 
-    const onSubmit = (event) => {
-        //console.log(JSON.stringify(event));
-        addItem(event);
-      };
+    // const onSubmit = (event) => {
+    //     //console.log(JSON.stringify(event));
+    //     addItem(event);
+    //   };
 
       const handleSubmit = event => {
         event.preventDefault();
         addItem();
         //setInput({ name: "", phone: "", birthday: ""}); // if you want empty input box after submit
       };
-    
 
 	return props.trigger ? (
 		<Box>
@@ -92,24 +95,29 @@ function Additem(props) {
 						<input
 							label="choose photo"
 							type="file"
-							name="image"
+							name="item_image"
 							accept="image/*"
 							multiple={true}
+							onChange={(e) => handleChange(e)}
 						/>
 					</div>
 					<div>
 						<TextField
 							label="item"
 							id="item"
+							name="item_name"
 							sx={{ m: 1, width: "25ch" }}
 							type="text"
+							onChange={(e) => handleChange(e)}
 						/>
 					</div>
 					<div>
 						<OutlinedInput
 							id="outlined-adornment"
-							value={values.RM}
-							onChange={handleChange()}
+							// value={values.price}
+							type="text"
+							name="item_price"
+							onChange={(e) => handleChange(e)}
 							endAdornment={<InputAdornment position="end">RM</InputAdornment>}
 							aria-describedby="outlined-weight-helper-text"
 							inputProps={{

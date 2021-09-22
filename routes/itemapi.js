@@ -33,8 +33,8 @@ router.get('/', function(req, res, next) {
     db(
       `INSERT INTO item (item_image, item_name,item_price, menu_id) VALUES ("${req.body.item_image}","${req.body.item_name}", "${req.body.item_price}", 1);`
     )
-      .then(() => {
-        getAllItems(req, res);
+      .then((results) => {
+        res.send(results.data);
       })
       .catch(err => res.status(500).send(err));
   });
