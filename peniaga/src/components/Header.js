@@ -24,7 +24,7 @@ function Header() {
 						</div>
 						<div className="my-3">
 							<label htmlFor="formFile" className="form-label">
-								Upload image here
+								Masukkan gambar sini
 							</label>
 							<input
 								onChange={handleUploadChange}

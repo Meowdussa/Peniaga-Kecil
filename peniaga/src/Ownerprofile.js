@@ -50,8 +50,8 @@ const addMenu = (data)=> {
 			<div>
 				<Box>
 					<Box>
-						<Paper height="200px">
-                        <h4>Choose header photo</h4>
+						<Paper height="300px" width="300px">
+                        <h4>Pilih gambar</h4>
                         <input
 							label="choose photo"
 							type="file"
@@ -70,7 +70,7 @@ const addMenu = (data)=> {
 					<Box>
 						<Paper>
 							<span>
-								<button onClick={() => setItem(true)}>Add Item</button>
+								<button onClick={() => setItem(true)}>Tambah</button>
 							</span>
 							<Additem trigger={item} setTrigger={setItem}></Additem>
 						</Paper>

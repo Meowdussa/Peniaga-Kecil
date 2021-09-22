@@ -16,9 +16,11 @@ app.use(cors({
     credentials: true,
   }));
 
+
+ //store destination 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/uploads')
+      cb(null, './peniaga/public/uploads')
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -28,6 +30,12 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage })
 
+  router.post("/:id/headerupload",upload.single('image'), function(res,req){
+      //to create image url
+      const image = req.file.filename;
+      const id = 1;
+    db(``)
+  })
 
 
 
