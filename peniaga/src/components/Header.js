@@ -4,13 +4,35 @@ import { useState } from "react";
 
 function Header() {
     
-  const [image, setImage] = useState("https://fakeimg.pl/350x350/");
+const [image, setImage] = useState('');
 
-  function handleUploadChange(e) {
+const uploadImage = async(e) => {
+	//console.log(e.target.file);
+	const file = e.target.files[0];
+	const base64 = await convertBase64(file);
+	console.log(base64);
+	setImage(base64);
+}
+
+const convertBase64 = (file)=>{
+	return new Promise((resolve,reject)=>{
+		const fileReader= new FileReader();
+		fileReader.readAsDataURL(file);
+
+		fileReader.onload= (()=>{
+			resolve(fileReader.result);
+		});
+		fileReader.onerror=((error)=>{
+			reject(error);
+		})
+	})
+}
+
+/*   function handleUploadChange(e) {
     let uploaded = e.target.files[0];
     setImage(URL.createObjectURL(uploaded));
   }
-
+ */
 
     return (
 			<div>
@@ -27,7 +49,9 @@ function Header() {
 								Masukkan gambar sini
 							</label>
 							<input
-								onChange={handleUploadChange}
+								onChange={(e)=>{
+									uploadImage(e);
+								}}
 								className="form-control"
 								type="file"
 								id="formFile"

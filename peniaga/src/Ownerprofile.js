@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Additem from './components/Additem';
 import SaveIcon from '@mui/icons-material/Save';
+import Header from './components/Header';
+
 
 function Ownerprofile() {
     const [input,setInput] = useState({});
@@ -50,7 +52,7 @@ const addMenu = (data)=> {
 			<div>
 				<Box>
 					<Box>
-						<Paper height="300px" width="300px">
+						{/* <Paper height="300px" width="300px">
                         <h4>Pilih gambar</h4>
                         <input
 							label="choose photo"
@@ -59,7 +61,8 @@ const addMenu = (data)=> {
 							accept="image/*"
 							multiple={false}
 						/>
-						</Paper>
+						</Paper> */}
+                        <Header/>
 					</Box>
 					<Box>
 						<Paper>
