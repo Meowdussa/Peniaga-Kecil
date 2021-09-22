@@ -14,12 +14,14 @@ const Regioncard = () => {
         <div className="kl">
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea style={{backgroundColor: "aliceblue"}}>
+          <Link to='/kl'>
           <CardMedia
             component="img"
             height="200"
             image="https://images.pexels.com/photos/22804/pexels-photo.jpg"
             alt="Kuala Lumpur"
           />
+          </Link>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" style={{color: "black"}}>
             Kuala Lumpur
@@ -31,12 +33,14 @@ const Regioncard = () => {
         <div className="jitra">
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea style={{backgroundColor: "aliceblue"}}>
+          <Link to='/jitra'>
           <CardMedia
             component="img"
             height="200"
             image="https://rileklah.com/sites/default/files/styles/large/public/images/2020/06/24/node-5560/KEDAH%202.jpg"
             alt="jitra"
           />
+          </Link>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" style={{color: "black"}}>
               Jitra
