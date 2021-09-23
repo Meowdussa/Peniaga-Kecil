@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 var ownerapiRouter = require('./routes/ownerapi');
 var menuapiRouter = require('./routes/menuapi');
 var itemapiRouter = require('./routes/itemapi');
+var headerapiRouter = require('./routes/headerapi');
+
 
 var app = express();
 app.use(cors());
@@ -23,11 +25,16 @@ app.use('/', indexRouter);
 app.use('/ownerapi', ownerapiRouter);
 app.use('/menuapi', menuapiRouter);
 app.use('/itemapi', itemapiRouter);
+app.use('/headerapi', headerapiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+app.get('/', (req,res)=> res.json({msg:'app running'}));
+
+app.use(express.static('uploads'));
 
 // error handler
 app.use(function(err, req, res, next) {
