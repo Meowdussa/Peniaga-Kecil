@@ -35,18 +35,32 @@
 .owner-btn:link {
   color: aliceblue;
 }
-.owner-btn:hover {
-  opacity: 0.5;
+#logm {
+  text-decoration: none;
+  background-color: #2a9d8f;
+  color: aliceblue;
+  /* background-color: #ffd166;
+  color: gray; */
+}
+#logm:hover {
+  opacity: 0.8;
 }
 .signup-btn {
   font-family: monospace;
   padding: 10px;
   position: absolute;
   top: 8px;
-  right: 110px;
+  right: 150px;
 }
-.signup-btn:hover {
-  opacity: 0.5;
+#daftar{
+  text-decoration: none;
+  background-color: #ffd166;
+  color: gray;
+  /* background-color: #06d6a0;
+  color: aliceblue; */
+}
+#daftar:hover {
+  opacity: 0.8;
 }
 .user-btn {
   /* font-family: monospace; */

@@ -80,8 +80,7 @@ router.post("/login", async (req, res) => {
       `SELECT * FROM owner WHERE username='${req.body.username}'`);
   
     const user = results.data[0];
-
-    //pedro
+    
       if(!user) res.status(400).send({ message: "Pengguna tidak wujud" });
 
       
@@ -95,7 +94,8 @@ router.post("/login", async (req, res) => {
           res.cookie("access-token", accessToken, { 
             maxAge: 60*60*24*30*1000,
             // to prevent cookies being accessed
-            httpOnly: true
+            httpOnly: true,
+            secure: true
           })
           res.send(accessToken);
         }

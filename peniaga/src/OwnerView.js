@@ -2,7 +2,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 // import Container from '@material-ui/core/Container';
 import React, { useState, useEffect } from "react";
-import AddMenu from "./Addmenu";
 
 import "./OwnerView.css";
 //import UserView from "./UserView";

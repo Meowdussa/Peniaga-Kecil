@@ -1,0 +1,13 @@
+.logout-btn{
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+}
+#logout-btn{
+    background-color: #ef476f;
+    color: honeydew;
+}
+#logout-btn:hover{
+    background-color: #2a9d8f;
+    color: honeydew;
+}
