@@ -41,6 +41,7 @@ const Bintulu = () => {
             e.city === "Bintulu" && (
               <Grid item xs={4}>
                 <Item>
+                  <img src="https://cdn-icons-png.flaticon.com/512/273/273177.png" height="50" width="50"/>
                   <h4>{e.shop_name}</h4>
                   <h5>{e.address}</h5>
                   <h5>

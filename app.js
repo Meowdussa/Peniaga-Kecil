@@ -19,7 +19,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRouter);
 app.use('/ownerapi', ownerapiRouter);
@@ -27,24 +27,25 @@ app.use('/menuapi', menuapiRouter);
 app.use('/itemapi', itemapiRouter);
 app.use('/headerapi', headerapiRouter);
 
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 app.get('/', (req,res)=> res.json({msg:'app running'}));
 
 app.use(express.static('uploads'));
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.send('error');
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.send('You didnot find this page');
+// });
 
 module.exports = app;

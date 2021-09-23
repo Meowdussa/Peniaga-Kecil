@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require("../model/helper");
+const {validateToken} = require('./JWT');
 
 /* GET item listing. */
 router.get('/', function(req, res, next) {
@@ -31,7 +32,7 @@ router.get('/', function(req, res, next) {
 //   INSERT an item
   router.post("/", function(req, res) {
     db(
-      `INSERT INTO item (item_image, item_name,item_price, menu_id) VALUES ("${req.body.item_image}","${req.body.item_name}", "${req.body.item_price}", 1);`
+      `INSERT INTO item (item_image, item_name,item_price, menu_id) VALUES ("${req.body.item_image}","${req.body.item_name}", "${req.body.item_price}", 2);`
     )
       .then((results) => {
         res.send(results.data);
