@@ -19,26 +19,26 @@ function Additem(props) {
     setInput({ ...input, [event.target.name]: value });
   };
 
-  const uploadImage = async (e) => {
-	  const imageblob=e.target.files[0];
-	  const base64 = await convertBase64(imageblob);
-	  setImageLoad(base64);
-  }
+  // const uploadImage = async (e) => {
+	//   const imageblob=e.target.files[0];
+	//   const base64 = await convertBase64(imageblob);
+	//   setImageLoad(base64);
+  // }
 
-  const convertBase64 = (imageblob) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(imageblob);
+  // const convertBase64 = (imageblob) => {
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(imageblob);
 
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result);
+  //     };
 
-	  fileReader.onerror = (error) => {
-		  reject(error);
-	  }
-    });
-  };
+	//   fileReader.onerror = (error) => {
+	// 	  reject(error);
+	//   }
+  //   });
+  // };
 
   const addItem = () => {
     axios
@@ -95,7 +95,7 @@ function Additem(props) {
                 name="item_image"
                 accept="image/*"
                 multiple={true}
-                onChange={(e) => uploadImage(e)}
+                // onChange={(e) => uploadImage(e)}
               /><img src={imageLoad} height="250vh" width="250vw"/>
             </div>
             <div>
@@ -139,16 +139,3 @@ function Additem(props) {
 }
 
 export default Additem;
-
-{
-  /*  <form>
-            <label/>Menu List<label/><br/>
-            <span>{props.ownerDetails.shop_name} </span>
-            <input onChange={(e)=>handleChange(e)} placeholder="item" name="item" value={input.item}/>
-            <input onChange={(e)=>handleChange(e)} placeholder ="price" name="price" value={input.price}/>
-            <button
-            onClick={(e)=>{e.preventDefault(); setMenuButton(true); return false}}              
-            >Add menu</button>
-            <button onClick={(e)=> handleAddMenu(e,props.ownerDetails.id)}>Submit</button>
-           </form>  */
-}

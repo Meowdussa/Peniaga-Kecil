@@ -11,6 +11,7 @@ import Ownerprofile from "./Ownerprofile";
 import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
+import Button from '@mui/material/Button';
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -72,12 +73,12 @@ function App() {
               </div>
             </div>
             <div className="owner-btn">
-              <Link to="/logmasuk">
-                <div>Log Masuk</div>
+              <Link id="logm" to="/logmasuk">
+                <Button id="logm" variant="contained">LOG MASUK</Button>
               </Link>
             </div>
             <div className="signup-btn">
-              <Link to="/daftar">Daftar</Link>
+              <Link id="daftar" to="/daftar"><Button id="daftar" variant="contained">DAFTAR</Button></Link>
             </div>
             <Route path="/user" exact component={Usermap} />
             <Route path="/logmasuk" exact component={Login} />
@@ -87,6 +88,7 @@ function App() {
             <Route path="/bintulu" exact component={Bintulu}/>
             <Route path="/jitra" exact component={Jitra}/>
             <Route path="/kl" exact component={Kl}/>
+
           </Router>
           <div className="region"></div>
           {/* {(isUser)? 
