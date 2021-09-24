@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const Bintulu = () => {
+const Bintulu = (props) => {
   let [owner, setOwner] = useState([]);
 
   useEffect(() => {

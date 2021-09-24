@@ -1,19 +1,38 @@
-import React from 'react';
-import Searchbar from './Searchbar';
-import Regioncard from './Regioncard';
-import './Home.css'
+import React, { useEffect, useState } from "react";
+import Searchbar from "./Searchbar";
+import Regioncard from "./Regioncard";
+import axios from "axios";
 
 const Home = () => {
-    return (
-      <div className="home">
-        <div className="search-bar"><Searchbar 
-        placeholder="Nasi Lemak" 
-        // data={props.item_name} //uncomment after mapping item_name
-        />
-        <Regioncard/>
-        </div>
-      </div>
-    );
-}
+  let [owner, setOwner] = useState([]);
 
-export default Home
+  useEffect(() => {
+    getOwner();
+  }, []);
+
+  const getOwner = () => {
+    axios
+      .get("http://localhost:5000/ownerapi", owner)
+      .then((response) => {
+        console.log(response.data);
+        setOwner(response.data);
+      })
+      .catch(function (error) {
+        console.log("Error getting shop");
+      });
+  };
+
+  return (
+    <div className="home">
+      <div className="search-bar">
+        <Searchbar
+          placeholder="Nasi Lemak"
+          data={owner}
+        />
+      </div>
+      <Regioncard />
+    </div>
+  );
+};
+
+export default Home;
