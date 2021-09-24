@@ -1,6 +1,11 @@
 import axios from 'axios';
 import React from 'react'
 import { useState } from "react";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 
 function Header() {
@@ -21,27 +26,35 @@ function Header() {
 
 	return (
 		<div>
-			<div
-				className="d-flex justify-content-center align-items-center"
-			>
-				<div>
-					<img name="header_image" src={image} className="img-thumbnail" alt="..." />
+			<Card sx={{ maxWidth: 1200 }}>
+				<CardActionArea style={{ backgroundColor: "white" }}>
+					<CardMedia
+						component="img"
+						height="450"
+						image="https://cariblogger.com/assets/img/2020/04/img-makanan-tradisional-melayu-satay-unileverfoodsolutionscommy-min.jpg"
+						alt="sate"
+					/>
+					<CardContent style={{ backgroundColor: "white", color: "black" }}>
+						<Typography gutterBottom variant="h5" component="div">
+							Sate Pak Derus
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Selamat datang ke kedai saya. Di sini pelbagai jenis sate
+							ditawarkan,dari sate ayam ke sate ikan. Silalah menjamu selera
+							di kedai saya.
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							Alamat : JALAN ILMU HADAPAN MASJID TANJUNG PAUH, Bandar Darulaman, 06000 Jitra, Kedah
+						</Typography>
+						<Typography variant="body2" color="text.secondary">NOMBOR TELEFON  <a href="https://wa.me/01234578" target="blank">012223762</a>
 
-					<div>
-						<label htmlFor="formFile" className="form-label">
-							Masukkan gambar sini
-						</label>
-						<input
-							/* onChange={(e) => {
-								uploadImage(e);
-							}} */
-							className="form-control"
-							type="file"
-							id="formFile"
-						/>
-					</div>
-				</div>
-			</div>
+						</Typography>
+
+
+
+					</CardContent>
+				</CardActionArea>
+			</Card>
 		</div>
 	);
 }

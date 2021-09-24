@@ -9,7 +9,6 @@ var indexRouter = require('./routes/index');
 var ownerapiRouter = require('./routes/ownerapi');
 var menuapiRouter = require('./routes/menuapi');
 var itemapiRouter = require('./routes/itemapi');
-var headerapiRouter = require('./routes/headerapi');
 
 
 var app = express();
@@ -25,7 +24,6 @@ app.use('/', indexRouter);
 app.use('/ownerapi', ownerapiRouter);
 app.use('/menuapi', menuapiRouter);
 app.use('/itemapi', itemapiRouter);
-app.use('/headerapi', headerapiRouter);
 
 
 // catch 404 and forward to error handler

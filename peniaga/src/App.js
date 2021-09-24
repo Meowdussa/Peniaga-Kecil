@@ -12,6 +12,7 @@ import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
 import Button from '@mui/material/Button';
+import Shopprofile from "./Shopprofile";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -88,6 +89,7 @@ function App() {
             <Route path="/bintulu" exact component={Bintulu}/>
             <Route path="/jitra" exact component={Jitra}/>
             <Route path="/kl" exact component={Kl}/>
+            <Route path="/shopprofile" exact component={Shopprofile}/>
 
           </Router>
           <div className="region"></div>
