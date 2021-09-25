@@ -14,7 +14,7 @@ const Home = () => {
     axios
       .get("http://localhost:5000/ownerapi", owner)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setOwner(response.data);
       })
       .catch(function (error) {

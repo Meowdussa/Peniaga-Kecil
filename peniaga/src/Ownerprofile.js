@@ -4,17 +4,23 @@ import Paper from "@mui/material/Paper";
 //import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import Additem from "./components/Additem";
-import SaveIcon from "@mui/icons-material/Save";
 import Button from '@mui/material/Button';
-import './Ownerprofile.css'
+import './Ownerprofile.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import {useHistory} from "react-router-dom";
+import {AuthContext} from "./authentication/Authcontext"
+
+
 
 function Ownerprofile() {
   const [input, setInput] = useState({});
   let [menuerror, setMenuerror] = useState(null);
   const [item, setItem] = useState(false);
+  const {setAuthState} = useContext(AuthContext)
+
   const addMenu = (data) => {
     axios
       .post(`http://localhost:5000/menuapi`, data)
@@ -26,8 +32,12 @@ function Ownerprofile() {
       });
   };
 
+  let history = useHistory();
+
   const logout = () => {
-      sessionStorage.clear();
+      localStorage.clear();
+      setAuthState(false);
+      history.push("/logmasuk");
       console.log("LOGGED OUT")
   }
   /* let isShow = ()=>{
@@ -55,35 +65,63 @@ function Ownerprofile() {
   return (
     <div>
       <Box>
-        <Box>
-          <Paper height="200px">
-            <h4>Choose header photo</h4>
+        <Box id="header">
+          <Paper id="header-content" >
+            <h4>Selamat datang ke halaman anda!</h4>
+            <div className="highlight">
+            <a>Mulakan dengan memuat naik foto kedai anda</a>
+            </div>
+            <img id="header-img" src="https://fakeimg.pl/600x400"/>
             <input
+              id="header-input"
               label="choose photo"
               type="file"
               name="headerimg"
               accept="image/*"
               multiple={false}
             />
-          </Paper>
-        </Box>
-        <Box>
-          <Paper>
-            <input
-              type="text"
-              id="menutitle"
-              placeholder="masukkan tajuk menu"
-            />
-            <SaveIcon />
-          </Paper>
-        </Box>
-        <Box>
-          <Paper>
+            <Button id="upload-btn" type="submit">SIMPAN</Button>
+            <div className="highlight">
+            <a>Perkenalkan kedai anda</a>
+            </div>
+            <textarea id="shop-desc" type="text" name="description" placeholder="Selamat datang ke kedai kami! Kami menawarkan pelbagai jenis makanan..."></textarea>
+            <Button id="upload-btn" type="submit">SIMPAN</Button>
+            <div className="highlight">
+            <a>Senaraikan hidangan yang ditawarkan</a>
+            </div>
+            <div className="item-buttons">
+            <table className="table table-hover">
+          <thead>
+            <tr className="table-auto">
+              <th style={{ width: "30vw" }}>Nama hidangan</th>
+              <th style={{ width: "10vw" }}>Harga (RM)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {events.map((e) => ( */}
+              <tr>
+                <td>{/*{e.date}*/}</td>
+                <td>{/*{e.title}*/}</td>
+                <td className="del-btn" style={{ width: "1%" }} /*onClick={()=>deleteEvent(e.id)}*/>&times;</td>
+              </tr>
+            {/* ))} */}
+          </tbody>
+        </table>
             <span>
-              <button onClick={() => setItem(true)}>Add Item</button>
+              <button onClick={() => setItem(true)}>TAMBAH SENARAI</button>
             </span>
             <Additem trigger={item} setTrigger={setItem}></Additem>
+            </div>
           </Paper>
+        </Box>
+        <Box>
+            {/* <div className="item-buttons">
+            <span>
+              <button onClick={() => setItem(true)}>TAMBAH MAKANAN</button>
+            </span>
+            <Additem trigger={item} setTrigger={setItem}></Additem>
+            </div> */}
         </Box>
       </Box>
       <div className="logout-btn">

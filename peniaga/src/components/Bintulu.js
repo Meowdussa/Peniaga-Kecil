@@ -34,13 +34,13 @@ const Bintulu = (props) => {
 
   return (
     <div>
-      <h1>Support small business in Bintulu</h1>
+      <h1>Sokong peniaga kecil di Bintulu</h1>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
         {owner.map(
           (e) =>
             e.city === "Bintulu" && (
-              <Grid item xs={4}>
-                <Item>
+              <Grid item xs={4} >
+                <Item style={{height:"40vh", padding: "5vh", margin: "2vh"}}>
                   <img src="https://cdn-icons-png.flaticon.com/512/273/273177.png" height="50" width="50"/>
                   <h4>{e.shop_name}</h4>
                   <h5>{e.address}</h5>

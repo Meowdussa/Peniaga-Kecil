@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import "./Login.css"
+import {AuthContext} from "../authentication/Authcontext"
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loginStatus, setLoginStatus] = useState("");
+  const {setAuthState} = useContext(AuthContext)
 
   let history = useHistory();
 
@@ -25,7 +27,8 @@ function Login() {
         } else {
           setLoginStatus("Selamat datang!");
           console.log("LOGGED IN");
-          sessionStorage.setItem("accessToken", response.data);
+          localStorage.setItem("accessToken", response.data);
+          setAuthState(true);
           history.push("/profile");
         }
       })

@@ -34,13 +34,13 @@ const Kl = () => {
 
   return (
     <div>
-      <h1>Support small business in Kuala Lumpur</h1>
+      <h1>Sokong peniaga kecil di Kuala Lumpur</h1>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
         {owner.map(
           (e) =>
             e.city === "Kuala Lumpur" && (
               <Grid item xs={4}>
-                <Item>
+                <Item style={{height:"40vh", padding: "5vh", margin: "2vh"}}>
                   <h4>{e.shop_name}</h4>
                   <h5>{e.address}</h5>
                   <h5>

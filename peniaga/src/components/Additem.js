@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Button from '@mui/material/Button';
 //import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import Input from "@mui/material/Input";
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import axios from "axios";
-import './Additem.css';
+import "./Additem.css";
+
+const ariaLabel = { "aria-label": "description" };
 
 function Additem(props) {
   let [input, setInput] = useState({});
   let [error, setError] = useState(null);
   let [item, setItem] = useState([]);
-  let [imageLoad, setImageLoad] = useState("");
+  // let [imageLoad, setImageLoad] = useState("");
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -20,10 +25,10 @@ function Additem(props) {
   };
 
   // const uploadImage = async (e) => {
-	//   const imageblob=e.target.files[0];
-	//   const base64 = await convertBase64(imageblob);
-	//   setImageLoad(base64);
-  // }
+  //   const imageblob = e.target.files[0];
+  //   const base64 = await convertBase64(imageblob);
+  //   setImageLoad(base64);
+  // };
 
   // const convertBase64 = (imageblob) => {
   //   return new Promise((resolve, reject) => {
@@ -34,15 +39,23 @@ function Additem(props) {
   //       resolve(fileReader.result);
   //     };
 
-	//   fileReader.onerror = (error) => {
-	// 	  reject(error);
-	//   }
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
   //   });
   // };
 
   const addItem = () => {
     axios
-      .post(`http://localhost:5000/itemapi`, input)
+      .post(
+        `http://localhost:5000/itemapi`,
+        { input },
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         setInput(response);
@@ -56,7 +69,7 @@ function Additem(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     addItem();
-    //setInput({ name: "", phone: "", birthday: ""}); // if you want empty input box after submit
+    setInput({ item_name: "", item_price: "" }); // if you want empty input box after submit
   };
 
   useEffect(() => {
@@ -81,53 +94,51 @@ function Additem(props) {
         <Paper>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <button
+              <CancelPresentationIcon
                 className="close-button"
                 onClick={() => props.setTrigger(false)}
-              >
-                X
-              </button>
-            </div>
-            <div>
-              <input
-                label="choose photo"
-                type="file"
-                name="item_image"
-                accept="image/*"
-                multiple={true}
-                // onChange={(e) => uploadImage(e)}
-              /><img src={imageLoad} height="250vh" width="250vw"/>
-            </div>
-            <div>
-              <TextField
-                label="item"
-                id="item"
-                name="item_name"
-                sx={{ m: 1, width: "25ch" }}
-                type="text"
-                onChange={(e) => handleChange(e)}
               />
             </div>
-            <div>
-              <OutlinedInput
-                id="outlined-adornment"
-                // value={values.price}
-                type="text"
-                name="item_price"
-                onChange={(e) => handleChange(e)}
-                endAdornment={
-                  <InputAdornment position="end">RM</InputAdornment>
-                }
-                aria-describedby="outlined-weight-helper-text"
-                inputProps={{
-                  "aria-label": "price",
-                }}
-              />
-            </div>
-            <div>
-              <button onClick={console.log("im clicked")} type="submit">
-                Submit
-              </button>
+            <div className="item-content">
+              <img id="item-img" src="https://fakeimg.pl/200x200" />
+              <div>
+                <input
+                  id="item-input"
+                  label="choose photo"
+                  type="file"
+                  name="item_image"
+                  accept="image/*"
+                  multiple={true}
+                  // onChange={(e) => uploadImage(e)}
+                />
+              </div>
+              <div className="item-text">
+                <div>
+                <Input
+                  placeholder="Makanan"
+                  name="item_name"
+                  type="text"
+                  inputProps={ariaLabel}
+                  onChange={(e) => handleChange(e)}
+                />
+                </div>
+                <OutlinedInput
+                  id="outlined-adornment"
+                  type="text"
+                  name="item_price"
+                  style={{ width: "8vw", height: "5vh" }}
+                  onChange={(e) => handleChange(e)}
+                  startAdornment={
+                    <InputAdornment position="start">RM</InputAdornment>
+                  }
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "price",
+                  }}
+                />
+              </div>
+                <Button id="item-btn" type="submit">SIMPAN
+                </Button>
             </div>
           </form>
         </Paper>

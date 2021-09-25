@@ -1,7 +1,7 @@
 import "./App.css";
 import OwnerView from "./OwnerView";
 import UserView from "./UserView";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Usermap from "./components/Usermap";
 import Registerform from "./components/Registerform";
@@ -11,17 +11,18 @@ import Ownerprofile from "./Ownerprofile";
 import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import Shopprofile from "./Shopprofile";
+import Privateroute from "./authentication/Privateroute";
+import {AuthContext} from "./authentication/Authcontext";
+import axios from "axios";
 
 function App() {
-  // const [isUser, setIsUser] = useState([]);
-  //const [isOwner, setIsOwner]= useState([]);
-  const [register, setRegister] = useState(false);
-  const [isUser, setisUser] = useState(true);
-  /*   const handleChangeView = (isUser) => {
-    setisUser(isUser);
-  }; */
+  const [authState, setAuthState] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) setAuthState(true);
+  },[]);
 
   return (
     <body style={{ backgroundColor: "#caffbf" }}>
@@ -40,6 +41,7 @@ function App() {
           <Popup trigger={register} setTrigger={setRegister}></Popup> */}
         </div>
         <div className="app-content">
+          <AuthContext.Provider value={{authState,setAuthState}}>
           <Router>
             <div className="linkers">
               <div className="home-btn">
@@ -49,7 +51,11 @@ function App() {
                     height="50"
                     width="50"
                   />
-                  <div>Halaman Utama</div>
+                  <div>
+                    Halaman
+                    <br />
+                    Utama
+                  </div>
                 </Link>
               </div>
               <div className="user-btn">
@@ -69,29 +75,45 @@ function App() {
                     height="50"
                     width="50"
                   />
-                  <div>Profile</div>
+                  <div>Profil</div>
                 </Link>
               </div>
             </div>
-            <div className="owner-btn">
-              <Link id="logm" to="/logmasuk">
-                <Button id="logm" variant="contained">LOG MASUK</Button>
-              </Link>
-            </div>
-            <div className="signup-btn">
-              <Link id="daftar" to="/daftar"><Button id="daftar" variant="contained">DAFTAR</Button></Link>
-            </div>
+            {!authState && (
+              <>
+                <div className="owner-btn">
+                  <Link id="logm" to="/logmasuk">
+                    <Button id="logm" variant="contained">
+                      LOG MASUK
+                    </Button>
+                  </Link>
+                </div>
+                <div className="signup-btn">
+                  <Link id="daftar" to="/daftar">
+                    <Button id="daftar" variant="contained">
+                      DAFTAR
+                    </Button>
+                  </Link>
+                </div>
+              </>
+            )}
             <Route path="/user" exact component={Usermap} />
             <Route path="/logmasuk" exact component={Login} />
             <Route path="/daftar" exact component={Registerform} />
             <Route path="/" exact component={Home} />
+            <Route path="/bintulu" exact component={Bintulu} />
+            <Route path="/jitra" exact component={Jitra} />
+            <Route path="/kl" exact component={Kl} />
+            <Route path="/shopprofile" exact component={Shopprofile} />
             <Route path="/profile" exact component={Ownerprofile} />
-            <Route path="/bintulu" exact component={Bintulu}/>
-            <Route path="/jitra" exact component={Jitra}/>
-            <Route path="/kl" exact component={Kl}/>
-            <Route path="/shopprofile" exact component={Shopprofile}/>
-
+            {/* <Privateroute
+              path="/profile"
+              exact
+              component={Ownerprofile}
+              isAuth={validateToken}
+            /> */}
           </Router>
+          </AuthContext.Provider>
           <div className="region"></div>
           {/* {(isUser)? 
     <><button className="businessbutton" onClick={()=>handleChangeView(false)}>Post your business here</button><br/></> : <div/>}

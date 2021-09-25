@@ -30,14 +30,16 @@ router.get('/', function(req, res, next) {
   })
   
 //   INSERT an item
-  router.post("/", function(req, res) {
-    db(
+  router.post("/", async (req, res) => {
+    try {
+      await db(
       `INSERT INTO item (item_image, item_name,item_price, menu_id) VALUES ("${req.body.item_image}","${req.body.item_name}", "${req.body.item_price}", 2);`
     )
       .then((results) => {
         res.send(results.data);
       })
-      .catch(err => res.status(500).send(err));
+    }
+      catch (err) {res.status(500).send(err)};
   });
   
   

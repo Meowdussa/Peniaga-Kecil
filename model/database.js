@@ -19,11 +19,11 @@ con.connect(function(err) {
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists owner; DROP TABLE if exists menu; DROP TABLE if exists item; CREATE TABLE owner (owner_id INT NOT NULL AUTO_INCREMENT, username VARCHAR(15), password VARCHAR(1000), shop_name VARCHAR(40) not null, phone VARCHAR(15), address VARCHAR(100) not null, city VARCHAR(40), PRIMARY KEY (owner_id)); CREATE TABLE menu(menu_id INT NOT NULL AUTO_INCREMENT, owner_id INT NOT NULL, PRIMARY KEY (menu_id), FOREIGN KEY (owner_id) REFERENCES owner(owner_id)); CREATE TABLE item (item_id INT NOT NULL AUTO_INCREMENT, item_image BLOB, item_name TEXT(255), menu_id INT NOT NULL, item_price VARCHAR(15), PRIMARY KEY (item_id), FOREIGN KEY (menu_id) REFERENCES menu(menu_id));";
+    "DROP TABLE if exists owner; DROP TABLE if exists menu;DROP TABLE if exists item; CREATE TABLE owner (owner_id INT NOT NULL AUTO_INCREMENT, username VARCHAR(15), password binary(60), shop_name VARCHAR(40), phone VARCHAR(15), address VARCHAR(100), city VARCHAR(40), PRIMARY KEY (owner_id)); CREATE TABLE header(owner_id INT, header_id INT NOT NULL AUTO_INCREMENT, header_caption VARCHAR(500), header_image VARCHAR(500), PRIMARY KEY (header_id), FOREIGN KEY (owner_id) REFERENCES owner(owner_id)); CREATE TABLE item (owner_id INT, item_id INT NOT NULL AUTO_INCREMENT, item_name VARCHAR(40), item_price VARCHAR(10), item_image VARCHAR(500), PRIMARY KEY (item_id), FOREIGN KEY (owner_id) REFERENCES owner(owner_id));";
 
   con.query(sql, function(err, result) {
     if (err) throw err;
-    console.log("Table creation `owner, menu, item` were successful!");
+    console.log("Table creation `owner, header, item` were successful!");
 
     console.log("Closing...");
   });

@@ -1,3 +1,29 @@
-img {
-    border-radius: 20px;
+#item-input {
+  width: 20vw;
+  margin: 5px;
+}
+#item-img {
+  border-radius: 20px;
+}
+.item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+#item-btn {
+  margin: auto;
+  background-color: #a1e1cf;
+  height: 40px;
+}
+.close-button {
+  position: relative;
+  left: 200px;
+  cursor: pointer;
 }
