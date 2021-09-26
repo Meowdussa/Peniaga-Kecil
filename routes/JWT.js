@@ -12,9 +12,9 @@ const createTokens = (user) => {
 
 // middleware @ guards in Amogh's lecture
 const validateToken = (req, res, next) => {
-    const accessToken = req.cookies["access-token"]
+    const accessToken = req.header("accessToken")
 
-    // if there's no accesstoken in cookie
+    // if there's no accesstoken in header
     if(!accessToken) return res.status(400).send({error:"User not Authenticated!"});
 
     try {

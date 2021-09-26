@@ -1,0 +1,16 @@
+.parent {
+  /* background-image: url("https://user-images.githubusercontent.com/86279819/134784823-ad15e88c-2a0c-446a-b428-d5815155f6e3.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-color: "#caffbf"; */
+}
+#search-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

@@ -84,19 +84,20 @@ router.post("/login", async (req, res) => {
       if(!user) res.status(400).send({ message: "Pengguna tidak wujud" });
 
       
-      bcrypt.compare(req.body.password, user.password).then((match) => {
+      bcrypt.compare(req.body.password, user.password).then( async (match) => {
         if(!match) {
           res.status(400).send({message: "Nama pengguna/Kata laluan salah!"});
         } else {
+
           const accessToken = createTokens(user)
 
           //cookie expired after 30days
-          res.cookie("access-token", accessToken, { 
-            maxAge: 60*60*24*30*1000,
+          // res.cookie("access-token", accessToken, { 
+            // maxAge: 60*60*24*30*1000,
             // to prevent cookies being accessed
-            httpOnly: true,
-            secure: true
-          })
+          //   httpOnly: true,
+          //   secure: true
+          // })
           res.send(accessToken);
         }
       })
@@ -121,10 +122,10 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//profile
-router.get("/profile", validateToken, (req, res) => {
-  res.send("profile");
-});
+// router.get("/auth", validateToken, (req, res) => {
+//   res.send(req.user);
+// });
+
 module.exports = router;
 
 /* CREATE TABLE owner_menu(item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,item VARCHAR(250),price VARCHAR(250),owner_id INT,FOREIGN KEY (owner_id)REFERENCES owner(id)); */

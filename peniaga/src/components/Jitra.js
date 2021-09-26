@@ -33,15 +33,15 @@ const Jitra = () => {
   };
 
   return (
-    <div>
-      <h1>Support small business in Jitra</h1>
+    <div style={{marginTop: "10vh"}}>
+      <h1>Sokong peniaga kecil di Jitra</h1>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
         {owner.map(
           (e) =>
             e.city === "Jitra" && (
               <Grid item xs={4}>
-                <Item>
-                  <h4>{e.shop_name}</h4>
+                <Item style={{height:"40vh", padding: "5vh", margin: "2vh"}}>
+                <a href={`http://localhost:3000/${e.shop_name}`}><h4>{e.shop_name}</h4></a>
                   <h5>{e.address}</h5>
                   <h5>
                     <PhoneAndroidIcon/>

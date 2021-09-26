@@ -34,11 +34,13 @@ router.get('/', function(req, res, next) {
   router.post("/", function(req, res) {
     db(
       `INSERT INTO item (item_name,item_notes,item_price, owner_id) VALUES ("${req.body.item_name}","${req.body.item_notes}", "${req.body.item_price}",38);`
+
     )
       .then((results) => {
         res.send(results.data);
       })
-      .catch(err => res.status(500).send(err));
+    }
+      catch (err) {res.status(500).send(err)};
   });
   
   

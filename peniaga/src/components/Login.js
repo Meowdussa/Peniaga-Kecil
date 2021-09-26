@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useContext } from "react";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import "./Login.css"
+import {AuthContext} from "../authentication/Authcontext"
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loginStatus, setLoginStatus] = useState("");
+  const {setAuthState} = useContext(AuthContext);
 
   let history = useHistory();
 
@@ -25,7 +27,8 @@ function Login() {
         } else {
           setLoginStatus("Selamat datang!");
           console.log("LOGGED IN");
-          sessionStorage.setItem("accessToken", response.data);
+          localStorage.setItem("accessToken", response.data);
+          setAuthState(true);
           history.push("/profile");
         }
       })
@@ -37,6 +40,7 @@ function Login() {
   };
 
   return (
+    <Paper id="login">
     <div className="login">
       <h1>Log Masuk</h1>
       <label>Nama Pengguna</label>
@@ -54,9 +58,11 @@ function Login() {
         }}
       />
       <button className="login-btn" onClick={isLogin}>LOG MASUK</button>
-
+      {loginStatus &&
       <h1>{loginStatus}</h1>
+    }
     </div>
+    </Paper>
   );
 }
 
