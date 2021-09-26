@@ -7,7 +7,7 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var ownerapiRouter = require('./routes/ownerapi');
-var menuapiRouter = require('./routes/menuapi');
+var headerapiRouter = require('./routes/headerapi');
 var itemapiRouter = require('./routes/itemapi');
 
 
@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/ownerapi', ownerapiRouter);
-app.use('/menuapi', menuapiRouter);
+app.use('/headerapi', headerapiRouter);
 app.use('/itemapi', itemapiRouter);
 
 
@@ -32,8 +32,6 @@ app.use('/itemapi', itemapiRouter);
 // });
 
 app.get('/', (req,res)=> res.json({msg:'app running'}));
-
-app.use(express.static('uploads'));
 
 // error handler
 // app.use(function(err, req, res, next) {

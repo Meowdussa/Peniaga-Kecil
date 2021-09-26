@@ -3,26 +3,35 @@ var router = express.Router();
 const db = require("../model/helper");
 const { validateToken } = require('./JWT');
 
-/* GET menu listing. */
+/* GET header listing. */
 router.get('/', function(req, res, next) {
-  db("SELECT * FROM menu;")
+  db("SELECT * FROM header;")
   .then(results => {
     res.send(results.data);
   })
   .catch(err => res.status(500).send(err));
 });
 
-const getAllMenu = (req, res) => {
-  db("SELECT * FROM menu;")
+const getAllHeader = (req, res) => {
+  db("SELECT * FROM header;")
   .then(results => {
     res.send(results.data);
   })
   .catch(err => res.status(500).send(err));
 };
 
-// GET one menu
+// GET one menu 
+// router.get("/:id", function(req, res){
+//   db(`SELECT * FROM item INNER JOIN menu ON menu.menu_id=item.menu_id INNER JOIN owner ON menu.owner_id=owner.owner_id WHERE menu.menu_id=${req.params.id};`)
+//     .then((results) => {
+//       res.send(results.data);
+//     })
+//     .catch(err => res.status(404).send("menu not found"));
+// })
+
+// get one header image
 router.get("/:id", function(req, res){
-  db(`SELECT * FROM item INNER JOIN menu ON menu.menu_id=item.menu_id INNER JOIN owner ON menu.owner_id=owner.owner_id WHERE menu.menu_id=${req.params.id};`)
+  db(`SELECT (header_image) FROM item INNER JOIN menu ON menu.menu_id=item.menu_id INNER JOIN owner ON menu.owner_id=owner.owner_id WHERE menu.menu_id=${req.params.id};`)
     .then((results) => {
       res.send(results.data);
     })

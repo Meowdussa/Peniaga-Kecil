@@ -9,6 +9,7 @@ import Input from "@mui/material/Input";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import axios from "axios";
 import "./Additem.css";
+import {Image} from 'cloudinary-react';
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -17,6 +18,7 @@ function Additem(props) {
   const [error, setError] = useState(null);
   const [item, setItem] = useState([]);
   const [imageSelected, setImageSelected] = useState("");
+  const [imageURL, setImageURL] = useState("https://fakeimg.pl/200x200");
 
   // const handleChange = (event) => {
   //   const value = event.target.value;
@@ -35,7 +37,9 @@ function Additem(props) {
         formData
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        console.log(response.data.url)
+        setImageURL(response.data.url)
       });
   };
 
@@ -93,7 +97,8 @@ function Additem(props) {
               />
             </div>
             <div className="item-content">
-              <img id="item-img" src="https://fakeimg.pl/200x200" />
+              <Image id="item-img"
+              cloudName="sai-project" publicId={imageURL}/>
               <div>
                 <input
                   id="item-input"
