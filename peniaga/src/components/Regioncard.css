@@ -1,6 +1,10 @@
 .region{
     display:flex;
-    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding-left: 4vw;
 }
 .kl{
     width: 30vw;

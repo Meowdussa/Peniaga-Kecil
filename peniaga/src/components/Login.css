@@ -1,11 +1,19 @@
+#login{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
 .login {
     width: 40vw;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .login-btn {
     color: rgb(133, 59, 59);
     background-color: #a1e1cf;
     border: 0px;
-    width: 40vw;
+    width: auto;
 }
 .login-btn:hover{
     background-color: white;

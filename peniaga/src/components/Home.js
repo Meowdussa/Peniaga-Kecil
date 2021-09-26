@@ -24,11 +24,14 @@ const Home = () => {
 
   return (
     <div className="home">
+      <div className="parent">
+      <img
+        style={{ width:"100vw" }}
+        src="https://user-images.githubusercontent.com/86279819/134795518-a9c4ba6e-4a6e-4f46-81d3-6c2afa6843b8.jpg"
+      />
       <div className="search-bar">
-        <Searchbar
-          placeholder="Nasi Lemak"
-          data={owner}
-        />
+        <Searchbar id="search-bar" placeholder="Nasi Lemak" data={owner} />
+      </div>
       </div>
       <Regioncard />
     </div>

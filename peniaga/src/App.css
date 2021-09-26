@@ -1,33 +1,29 @@
 .App {
+  /* text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  /* background-color: #007F5F; */
+}
+.app-content {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* background-color: #007F5F; */
-  /* margin-top: 100px; */
-}
-.app-content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  /* margin-bottom: 5vh; */
 }
-/* .input-group input-group-lg{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-/* 
-------------------------------------------------- */
+#app-bar {
+  position: static;
+  background: rgb(42,157,143);
+  background: linear-gradient(90deg, rgba(42,157,143,1) 0%, rgba(80,218,201,1) 100%);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*------------------------------------------------- */
 /* body {
   background-color: #007F5F;
 } */
 .owner-btn {
   font-family: monospace;
-  padding: 10px;
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  /* background-color: #007F5F; */
   border-radius: 20px;
   width: auto;
   color: aliceblue;
@@ -37,59 +33,50 @@
 }
 #logm {
   text-decoration: none;
-  background-color: #2a9d8f;
-  color: aliceblue;
-  /* background-color: #ffd166;
-  color: gray; */
+  background-color: #1cffe3;
+  color: gray;
 }
 #logm:hover {
   opacity: 0.8;
 }
 .signup-btn {
-  font-family: monospace;
-  padding: 10px;
-  position: absolute;
-  top: 8px;
-  right: 150px;
+  padding: 1vw;
+  margin-left: 10vw;
 }
 #daftar{
   text-decoration: none;
-  background-color: #ffd166;
-  color: gray;
-  /* background-color: #06d6a0;
-  color: aliceblue; */
+  background-color: #ff8464;
+  color: aliceblue;
 }
 #daftar:hover {
   opacity: 0.8;
 }
 .user-btn {
-  /* font-family: monospace; */
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+  padding-right: 5vw;
 }
 .user-btn:hover {
   opacity: 0.5;
 }
 .profile-btn {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+  padding-right: 5vw;
 }
 .profile-btn:hover {
   opacity: 0.5;
 }
 .home-btn {
-  /* font-family: monospace; */
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-right: 5vw;
+  align-items: center;
+  margin-left: 15vw;
 }
 .home-btn:hover {
   opacity: 0.5;
 }
-.linkers {
+/* .linkers {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin: 5vh;
-}
+} */

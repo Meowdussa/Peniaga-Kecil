@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useForm } from "react-hook-form";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import "./Login.css"
@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loginStatus, setLoginStatus] = useState("");
-  const {setAuthState} = useContext(AuthContext)
+  const {setAuthState} = useContext(AuthContext);
 
   let history = useHistory();
 
@@ -40,6 +40,7 @@ function Login() {
   };
 
   return (
+    <Paper id="login">
     <div className="login">
       <h1>Log Masuk</h1>
       <label>Nama Pengguna</label>
@@ -57,9 +58,11 @@ function Login() {
         }}
       />
       <button className="login-btn" onClick={isLogin}>LOG MASUK</button>
-
+      {loginStatus &&
       <h1>{loginStatus}</h1>
+    }
     </div>
+    </Paper>
   );
 }
 
