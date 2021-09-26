@@ -10,7 +10,6 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 
 import Ownerprofile from "./Ownerprofile";
-import Shopprofile from "./Shopprofile";
 import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
@@ -120,7 +119,6 @@ function App() {
             <Route path="/jitra" exact component={Jitra} />
             <Route path="/kl" exact component={Kl} />
             <Route path="/profile" exact component={Ownerprofile} />
-            <Route path="/shopprofile" exact component={Shopprofile} />
 
             {/* <Privateroute
               path="/profile"

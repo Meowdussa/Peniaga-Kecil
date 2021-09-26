@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
+    "cloudinary-react": "^1.7.0",
     "leaflet": "^1.7.1",
     "opencage-api-client": "^1.0.0",
     "react": "^17.0.2",
