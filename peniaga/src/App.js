@@ -12,7 +12,9 @@ import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
 import Button from '@mui/material/Button';
-import Shopprofile from "./Shopprofile";
+import Keklapis from "./components/kedai/Keklapis";
+import Supkawah from "./components/kedai/Supkawah";
+import Chenkitchen from "./components/kedai/Chenkitchen";
 
 function App() {
   // const [isUser, setIsUser] = useState([]);
@@ -89,7 +91,9 @@ function App() {
             <Route path="/bintulu" exact component={Bintulu}/>
             <Route path="/jitra" exact component={Jitra}/>
             <Route path="/kl" exact component={Kl}/>
-            <Route path="/shopprofile" exact component={Shopprofile}/>
+            <Route path="/supkawah" exact component={Supkawah}/>
+            <Route path="/keklapis" exact component={Keklapis}/>
+            <Route path="/chenkitchen" exact component={Chenkitchen}/>
 
           </Router>
           <div className="region"></div>

@@ -31,23 +31,22 @@ function Header() {
 					<CardMedia
 						component="img"
 						height="450"
-						image="https://cariblogger.com/assets/img/2020/04/img-makanan-tradisional-melayu-satay-unileverfoodsolutionscommy-min.jpg"
+						image="https://i.postimg.cc/ZKTQmtd0/header.jpg"
 						alt="sate"
 					/>
 					<CardContent style={{ backgroundColor: "white", color: "black" }}>
 						<Typography gutterBottom variant="h5" component="div">
-							Sate Pak Derus
+							Sup Kawah
 						</Typography>
 						<Typography variant="body2" color="text.secondary">
-							Selamat datang ke kedai saya. Di sini pelbagai jenis sate
-							ditawarkan,dari sate ayam ke sate ikan. Silalah menjamu selera
+							Selamat datang ke kedai saya. Di sini pelbagai jenis makanan Melayu Sarawak
+							ditawarkan,dari gulai ayam hingga ke ikan masak lemak. Silalah menjamu selera
 							di kedai saya.
 						</Typography>
 						<Typography variant="body2" color="text.secondary">
-							Alamat : JALAN ILMU HADAPAN MASJID TANJUNG PAUH, Bandar Darulaman, 06000 Jitra, Kedah
+							Alamat : Lorong B11, RPR Sebiew, 97000 Bintulu
 						</Typography>
-						<Typography variant="body2" color="text.secondary">NOMBOR TELEFON  <a href="https://wa.me/01234578" target="blank">012223762</a>
-
+						<Typography variant="body2" color="text.secondary">NOMBOR TELEFON  <a href="https://wa.me/01234578" target="blank">0102396193</a>
 						</Typography>
 
 
