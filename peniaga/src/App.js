@@ -14,6 +14,7 @@ import Bintulu from "./components/Bintulu";
 import Jitra from "./components/Jitra";
 import Kl from "./components/Kl";
 
+
 import Privateroute from "./authentication/Privateroute";
 import { AuthContext } from "./authentication/Authcontext";
 
@@ -24,6 +25,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import Keklapis from "./components/kedai/Keklapis";
+import Supkawah from "./components/kedai/Supkawah";
+import Chenkitchen from "./components/kedai/Chenkitchen";
+
 
 function App() {
   const [authState, setAuthState] = useState(false);
@@ -119,6 +124,10 @@ function App() {
             <Route path="/jitra" exact component={Jitra} />
             <Route path="/kl" exact component={Kl} />
             <Route path="/profile" exact component={Ownerprofile} />
+            <Route path="/supkawah" exact component={Supkawah}/>
+            <Route path="/keklapis" exact component={Keklapis}/>
+            <Route path="/chenkitchen" exact component={Chenkitchen}/>
+
 
             {/* <Privateroute
               path="/profile"
