@@ -61,19 +61,68 @@ function Keklapis() {
 								image="https://i.postimg.cc/qq3703f8/header.jpg"
 								alt="kek"
 							/>
-							<CardContent
-								style={{ backgroundColor: "white", color: "black" }}
-							>
-								{owner.map(
-									(e) =>{
-										e.owner_id === "38" && (
-											<Typography gutterBottom variant="h5" component="div">
-										<h3>{e.shop_name}</h3>
-										</Typography>
-								)})}
+							<CardContent style={{ backgroundColor: "white", color: "black" }}>
+								<div className="users">
+									{owner.map(
+										(user) =>
+											user.owner_id === 38 && (
+												<Typography className="user">
+													{user.shop_name}
+													<br />
+													{user.address}
+													<br />
+													<a
+														href={`https://wa.me/${user.phone}`}
+														target="blank"
+													>
+														{user.phone}
+													</a>
+												</Typography>
+											)
+									)}
+								</div>
 							</CardContent>
 						</CardActionArea>
 					</Card>
+					<br />
+					<Grid container>
+						{item.map(
+							(lol)=>lol.owner_id === 38 &&(<Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
+							<Grid container spacing={2}>
+								<Grid item>
+									<img
+										style={{ width: 128, height: 128 }}
+										alt="cadbury"
+										src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm container>
+								<Grid item xs container direction="column" spacing={2}>
+									<Grid item xs>
+										<Typography
+											gutterBottom
+											variant="subtitle1"
+											component="div"
+										>
+											{lol.item_name}
+										</Typography>
+									</Grid>
+									<Grid item>
+										<Typography sx={{ cursor: "pointer" }} variant="body2">
+											Tambah
+										</Typography>
+									</Grid>
+								</Grid>
+								<Grid item>
+									<Typography variant="subtitle1" component="div">
+										RM{lol.item_price}
+									</Typography>
+								</Grid>
+							</Grid>
+							</Grid>
+						</Paper>))}
+					</Grid>
 				</Grid>
 			</Grid>
 		</div>
@@ -82,36 +131,7 @@ function Keklapis() {
 
 export default Keklapis;
 
-{/* <Card sx={{ maxWidth: 1200 }}>
-					<CardActionArea style={{ backgroundColor: "white" }}>
-						<CardMedia
-							component="img"
-							height="450"
-							image="https://i.postimg.cc/qq3703f8/header.jpg"
-							alt="kek"
-						/>
-						<CardContent style={{ backgroundColor: "white", color: "black" }}>
-							<Typography gutterBottom variant="h5" component="div">
-								Kek Lapis
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Selamat datang ke kedai saya. Di sini pelbagai jenis Kek Lapis
-								Sarawak ditawarkan,dari tiga rasa hingga ke masam manis.Terima
-								Kasih kerana menyokong bisnes kecil saya.
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Alamat : Lorong B11, RPR Sebiew, 97000 Bintulu
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								NOMBOR TELEFON  
-								<a href="https://wa.me/01234578" target="blank">
-									0156458445
-								</a>
-							</Typography>
-						</CardContent>
-					</CardActionArea>
-				</Card>
-				<break/>
+{/* 
 				<Grid container>
 					<Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
 						<Grid container spacing={2}>

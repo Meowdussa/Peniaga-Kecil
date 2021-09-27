@@ -39,9 +39,8 @@ router.get('/', function(req, res, next) {
       .then((results) => {
         res.send(results.data);
       })
-    }
-      catch (err) {res.status(500).send(err)};
-  });
+      .catch(err => res.status(404).send("item not added")); 
+     });
   
   
   // DELETE an item
