@@ -43,9 +43,9 @@ router.get('/', function(req, res, next) {
   // });
 
   // Test insert item
-  router.post("/", validateToken, (req, res) => {
-    const owner_id = req.user.owner_id;
-    db(`INSERT INTO item (owner_id, item_name, item_price, item_image) VALUES ("${owner_id}","${req.body.item_name}", "${req.body.item_price}", "${req.body.item_image}");`)
+  router.post("/", validateToken,  (req, res) => {
+    console.log("item insert", req.user.id)
+    db(`INSERT INTO item (owner_id, item_name, item_price, item_image) VALUES ("${req.user.id}","${req.body.item_name}", "${req.body.item_price}", "${req.body.item_image}");`)
     .then((results) => {
       res.send(results.data);
     })
