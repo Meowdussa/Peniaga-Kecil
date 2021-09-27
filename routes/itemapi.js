@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
 
   // Test insert item
   router.post("/", validateToken,  (req, res) => {
-    console.log("item insert", req.user.id)
+    console.log("inserted by owner_id:", req.user.id)
     db(`INSERT INTO item (owner_id, item_name, item_price, item_image) VALUES ("${req.user.id}","${req.body.item_name}", "${req.body.item_price}", "${req.body.item_image}");`)
     .then((results) => {
       res.send(results.data);
@@ -53,7 +53,7 @@ router.get('/', function(req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
-  // Hanis hardcode
+  // Insert hardcode
   // router.post("/", function(req, res) {
   //   db(
   //     `INSERT INTO item (item_name,item_notes,item_price, owner_id) VALUES ("${req.body.item_name}","${req.body.item_notes}", "${req.body.item_price}",38);`

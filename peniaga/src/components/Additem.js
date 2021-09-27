@@ -56,31 +56,48 @@ function Additem(props) {
   //     });
   // };
 
+  // const addItem = () => {
+  //   input.item_image = imageURL;
+  //   axios
+  //     .post(
+  //       `http://localhost:5000/itemapi`,
+  //       { input },
+  //       {
+  //         headers: {
+  //           accessToken: localStorage.getItem("accessToken"),
+  //         },
+  //       }
+  //     )
+  //     .then((data) => {
+  //       console.log(data);
+  //       setItem(data);
+  //       //console.log("Item added");
+  //     })
+  //     .catch((error) => {
+  //       setError("Error in adding new item");
+  //     });
+  // };
+
   const addItem = () => {
-    axios
-      .post(
-        `http://localhost:5000/itemapi`,
-        { item },
-        {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        setItem(response);
-        //console.log("Item added");
+    input.item_image = imageURL;
+    fetch("/itemapi", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accessToken: localStorage.getItem("accessToken")
+      },
+      body: JSON.stringify(input),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setItem(data);
       })
-      .catch((error) => {
-        setError("Error in adding new item");
-      });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     addItem();
-    setInput({ item_name: "", item_price: "", item_image: "" }); // if you want empty input box after submit
+    // setInput({ item_name: "", item_price: "", item_image: "" }); // if you want empty input box after submit
   };
 
   const handleChange = (event) => {
@@ -125,7 +142,7 @@ function Additem(props) {
               <div className="item-text">
                 <div>
                   <Input
-                    placeholder="Makanan"
+                    placeholder="Nama hidangan"
                     name="item_name"
                     type="text"
                     inputProps={ariaLabel}
