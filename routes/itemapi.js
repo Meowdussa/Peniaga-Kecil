@@ -31,16 +31,39 @@ router.get('/', function(req, res, next) {
   })
   
 //   INSERT an item
-  router.post("/", function(req, res) {
-    db(
-      `INSERT INTO item (item_name,item_notes,item_price, owner_id) VALUES ("${req.body.item_name}","${req.body.item_notes}", "${req.body.item_price}",38);`
+  // router.post("/", async (req, res) => {
+  //   try {
+  //     await db(
+  //     `INSERT INTO item (item_image, item_name,item_price, menu_id) VALUES ("${req.body.item_image}","${req.body.item_name}", "${req.body.item_price}", 2);`
+  //   )
+  //     .then((results) => {
+  //       res.send(results.data);
+  //     })
+  //   }
+  //     catch (err) {res.status(500).send(err)};
+  // });
 
-    )
-      .then((results) => {
-        res.send(results.data);
-      })
-      .catch(err => res.status(404).send("item not added")); 
-     });
+  // Test insert item
+  router.post("/", validateToken,  (req, res) => {
+    console.log("inserted by owner_id:", req.user.id)
+    db(`INSERT INTO item (owner_id, item_name, item_price, item_image) VALUES ("${req.user.id}","${req.body.item_name}", "${req.body.item_price}", "${req.body.item_image}");`)
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
+});
+
+  // Insert hardcode
+  // router.post("/", function(req, res) {
+  //   db(
+  //     `INSERT INTO item (item_name,item_notes,item_price, owner_id) VALUES ("${req.body.item_name}","${req.body.item_notes}", "${req.body.item_price}",38);`
+
+  //   )
+  //     .then((results) => {
+  //       res.send(results.data);
+  //     })
+  //     .catch(err => res.status(404).send("item not added")); 
+  //    });
   
   
   // DELETE an item

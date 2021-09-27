@@ -6,7 +6,7 @@ const app = express();
 app.use(cookieParser());
 
 const createTokens = (user) => {
-    const accessToken = sign({username: user.username, id: user.id}, SECRET);
+    const accessToken = sign({username: user.username, id: user.owner_id}, SECRET);
     return accessToken;
 }
 
@@ -20,6 +20,7 @@ const validateToken = (req, res, next) => {
     try {
         //to check if it's a valid token
         const validToken = verify(accessToken, SECRET)
+        req.user = validToken;
         if (validToken) {
             req.authenticated = true;
             return next();

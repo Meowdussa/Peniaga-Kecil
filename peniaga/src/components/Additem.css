@@ -2,8 +2,13 @@
   width: 20vw;
   margin: 5px;
 }
+.cloud-upload{
+  display: flex;
+}
 #item-img {
   border-radius: 20px;
+  height: 200px;
+  width: 200px;
 }
 .item-content {
   display: flex;
@@ -20,7 +25,7 @@
 #item-btn {
   margin: auto;
   background-color: #a1e1cf;
-  height: 40px;
+  height: 5vh;
 }
 .close-button {
   position: relative;

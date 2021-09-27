@@ -7,6 +7,7 @@ import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 let axios = require("axios");
 
 function Keklapis() {
@@ -53,7 +54,7 @@ function Keklapis() {
 		<div>
 			<Grid container>
 				<Grid item xs={12}>
-					<Card sx={{ maxWidth: 1200 }}>
+					<Card sx={{ width: "100vw" }}>
 						<CardActionArea style={{ backgroundColor: "white" }}>
 							<CardMedia
 								component="img"
@@ -65,7 +66,7 @@ function Keklapis() {
 								<div className="users">
 									{owner.map(
 										(user) =>
-											user.owner_id === 38 && (
+											user.owner_id === 9 && (
 												<Typography className="user">
 													{user.shop_name}
 													<br />
@@ -75,7 +76,7 @@ function Keklapis() {
 														href={`https://wa.me/${user.phone}`}
 														target="blank"
 													>
-														{user.phone}
+														<PhoneAndroidIcon/>{user.phone}
 													</a>
 												</Typography>
 											)
@@ -87,7 +88,7 @@ function Keklapis() {
 					<br />
 					<Grid container>
 						{item.map(
-							(lol)=>lol.owner_id === 38 &&(<Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
+							(lol)=>lol.owner_id === 9 &&(<Paper style={{margin: "3vw"}} sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
 							<Grid container spacing={2}>
 								<Grid item>
 									<img
