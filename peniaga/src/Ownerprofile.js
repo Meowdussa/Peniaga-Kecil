@@ -114,14 +114,6 @@ function Ownerprofile() {
             </div>
           </Paper>
         </Box>
-        <Box>
-          {/* <div className="item-buttons">
-            <span>
-              <button onClick={() => setItem(true)}>TAMBAH MAKANAN</button>
-            </span>
-            <Additem trigger={item} setTrigger={setItem}></Additem>
-            </div> */}
-        </Box>
       </Box>
       <div className="logout-btn">
         <Button id="logout-btn" variant="contained" onClick={logout}>
@@ -133,41 +125,3 @@ function Ownerprofile() {
 }
 
 export default Ownerprofile;
-
-//<input type="file" name="image" accept="image/*" multiple={true}/>
-
-/*  const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      }; */ //for material ui
-
-/*  return (props.trigger) ? (
-        <div className="popup">
-           <div className="inner-popup">
-                <button className="close-button" onClick={()=>props.setTrigger(false)}>X</button>
-                {props.children}
-                <span className="setting-txt"><h5>TIMER SETTING </h5></span>
-            </div>
-            <div>
-                
-            </div>
-
-        </div>
-        ) : ""; */
-
-/* let isShow = ()=>{
-    console.log("Add item is click");
-    <Additem/>
-} */
-
-{
-  /* <Paper height="300px" width="300px">
-                        <h4>Pilih gambar</h4>
-                        <input
-							label="choose photo"
-							type="file"
-							name="headerimg"
-							accept="image/*"
-							multiple={false}
-						/>
-						</Paper> */
-}
