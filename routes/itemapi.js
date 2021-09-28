@@ -23,7 +23,8 @@ router.get('/', function(req, res, next) {
   
   // GET one item
   router.get("/:id", function(req, res){
-    db(`SELECT * FROM item where id=${req.params.item_id};`)
+    console.log("inserted by owner_id:", req.user.id)
+    db(`SELECT * FROM item where owner_id=${req.user.id};`)
       .then((results) => {
         res.send(results.data);
       })

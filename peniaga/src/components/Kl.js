@@ -33,8 +33,7 @@ const Kl = () => {
   };
 
   return (
-    <div style={{marginTop: "10vh", marginBottom: "20vh"
-  }}>
+    <div style={{marginTop: "10vh", marginBottom: "20vh"}}>
       <h1>Sokong peniaga kecil di Kuala Lumpur</h1>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
         {owner.map(
