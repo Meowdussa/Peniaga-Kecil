@@ -22,29 +22,8 @@ function Ownerprofile() {
     localStorage.clear();
     history.push("/logmasuk");
     console.log("LOGGED OUT");
-  };
-  /* let isShow = ()=>{
-    console.log("Add item is click");
-    <Additem/>
-} */
-
-  /*  const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      }; */ //for material ui
-
-  /*  return (props.trigger) ? (
-        <div className="popup">
-           <div className="inner-popup">
-                <button className="close-button" onClick={()=>props.setTrigger(false)}>X</button>
-                {props.children}
-                <span className="setting-txt"><h5>TIMER SETTING </h5></span>
-            </div>
-            <div>
-                
-            </div>
-
-        </div>
-        ) : ""; */
+  }
+  
   return (
     <div className="ownerprofile">
       <Box>
@@ -114,14 +93,6 @@ function Ownerprofile() {
             </div>
           </Paper>
         </Box>
-        {/* <Box> */}
-          {/* <div className="item-buttons">
-            <span>
-              <button onClick={() => setItem(true)}>TAMBAH MAKANAN</button>
-            </span>
-            <Additem trigger={item} setTrigger={setItem}></Additem>
-            </div> */}
-        {/* </Box> */}
       </Box>
       <div className="logout-btn">
         <Button id="logout-btn" variant="contained" onClick={logout}>

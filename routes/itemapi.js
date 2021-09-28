@@ -22,8 +22,9 @@ router.get('/', function(req, res, next) {
   };
   
   // GET one item
-  router.get("/:owner_id", validateToken, function(req, res){
-    db(`SELECT (item_name, item_price) FROM item where owner_id=${req.user.id};`)
+  router.get("/:id", function(req, res){
+    console.log("inserted by owner_id:", req.user.id)
+    db(`SELECT * FROM item where owner_id=${req.user.id};`)
       .then((results) => {
         res.send(results.data);
       })
