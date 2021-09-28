@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import AddIcon from '@mui/icons-material/Add';
 let axios = require("axios");
 
 function Keklapis() {
@@ -86,9 +87,9 @@ function Keklapis() {
 						</CardActionArea>
 					</Card>
 					<br />
-					<Grid container>
+					<Grid container width="100vw">
 						{item.map(
-							(lol)=>lol.owner_id === 9 &&(<Paper style={{margin: "3vw"}} sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
+							(lol)=>lol.owner_id === 38 &&(<Paper style={{margin: "3vw"}} sx={{ p: 2,  width: "30vw", flexGrow: 1 }}>
 							<Grid container spacing={2}>
 								<Grid item>
 									<img
@@ -97,7 +98,6 @@ function Keklapis() {
 										src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
 									/>
 								</Grid>
-
 								<Grid item xs={12} sm container>
 								<Grid item xs container direction="column" spacing={2}>
 									<Grid item xs>
@@ -110,6 +110,7 @@ function Keklapis() {
 										</Typography>
 									</Grid>
 									<Grid item>
+										<AddIcon/>
 										<Typography sx={{ cursor: "pointer" }} variant="body2">
 											Tambah
 										</Typography>
