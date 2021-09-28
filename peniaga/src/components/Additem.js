@@ -44,12 +44,20 @@ function Additem(props) {
   //   getItem();
   // }, []);
 
-  // const getItem = () => {
+  // const getItem = (id) => {
   //   axios
-  //     .get("http://localhost:5000/itemapi", item)
+  //     .get(
+  //       `http://localhost:5000/itemapi/${id}`,
+  //       { item },
+  //       {
+  //         headers: {
+  //           accessToken: localStorage.getItem("accessToken"),
+  //         },
+  //       }
+  //     )
   //     .then((response) => {
   //       console.log(response.data);
-  //        (response.data);
+  //       setItem(response.data);
   //     })
   //     .catch(function (error) {
   //       console.log("Error getting item");
@@ -84,14 +92,14 @@ function Additem(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        accessToken: localStorage.getItem("accessToken")
+        accessToken: localStorage.getItem("accessToken"),
       },
       body: JSON.stringify(input),
     })
       .then((response) => response.json())
       .then((data) => {
         setItem(data);
-      })
+      });
   };
 
   const handleSubmit = (event) => {
@@ -104,8 +112,6 @@ function Additem(props) {
     const value = event.target.value;
     setInput({ ...input, [event.target.name]: value });
   };
-
-  
 
   return props.trigger ? (
     <Box>

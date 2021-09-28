@@ -22,8 +22,8 @@ router.get('/', function(req, res, next) {
   };
   
   // GET one item
-  router.get("/:id", function(req, res){
-    db(`SELECT * FROM item where id=${req.params.item_id};`)
+  router.get("/:owner_id", validateToken, function(req, res){
+    db(`SELECT (item_name, item_price) FROM item where owner_id=${req.user.id};`)
       .then((results) => {
         res.send(results.data);
       })
