@@ -77,7 +77,8 @@ function Keklapis() {
 														href={`https://wa.me/${user.phone}`}
 														target="blank"
 													>
-														<PhoneAndroidIcon/>{user.phone}
+														<PhoneAndroidIcon />
+														{user.phone}
 													</a>
 												</Typography>
 											)
@@ -86,46 +87,58 @@ function Keklapis() {
 							</CardContent>
 						</CardActionArea>
 					</Card>
-					<br />
-					<Grid container width="100vw">
-						{item.map(
-							(lol)=>lol.owner_id === 38 &&(<Paper style={{margin: "3vw"}} sx={{ p: 2,  width: "30vw", flexGrow: 1 }}>
-							<Grid container spacing={2}>
-								<Grid item>
-									<img
-										style={{ width: 128, height: 128 }}
-										alt="cadbury"
-										src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
-									/>
-								</Grid>
-								<Grid item xs={12} sm container>
-								<Grid item xs container direction="column" spacing={2}>
-									<Grid item xs>
-										<Typography
-											gutterBottom
-											variant="subtitle1"
-											component="div"
-										>
-											{lol.item_name}
-										</Typography>
-									</Grid>
-									<Grid item>
-										<AddIcon/>
-										<Typography sx={{ cursor: "pointer" }} variant="body2">
-											Tambah
-										</Typography>
-									</Grid>
-								</Grid>
-								<Grid item>
-									<Typography variant="subtitle1" component="div">
-										RM{lol.item_price}
-									</Typography>
-								</Grid>
-							</Grid>
-							</Grid>
-						</Paper>))}
-					</Grid>
 				</Grid>
+				
+				<div >
+
+					{item.map(
+						(lol) =>
+							lol.owner_id === 38 && (
+								//each individual cards
+								<Paper
+									style={{ margin: "3vw" }}
+									sx={{ p: 2, /* width: "30vw", */ flexGrow: 1 }}
+								>
+									<Grid container spacing={2}>
+										<Grid item>
+											<img
+												style={{ width: 128, height: 128 }}
+												alt="cadbury"
+												src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
+											/>
+										</Grid>
+										<Grid item xs={12} sm container>
+											<Grid item xs container direction="column" spacing={2}>
+												<Grid item xs>
+													<Typography
+														gutterBottom
+														variant="subtitle1"
+														component="div"
+													>
+														{lol.item_name}
+													</Typography>
+												</Grid>
+												<Grid item>
+													<AddIcon />
+													<Typography
+														sx={{ cursor: "pointer" }}
+														variant="body2"
+													>
+														Tambah
+													</Typography>
+												</Grid>
+											</Grid>
+											<Grid item>
+												<Typography variant="subtitle1" component="div">
+													RM{lol.item_price}
+												</Typography>
+											</Grid>
+										</Grid>
+									</Grid>
+								</Paper>
+							)
+					)}
+				</div>
 			</Grid>
 		</div>
 	);

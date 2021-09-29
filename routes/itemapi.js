@@ -5,8 +5,8 @@ const {validateToken} = require('./JWT');
 
 
 /* GET item listing. */
-router.get('/', function(req, res, next) {
-    db("SELECT * FROM item;")
+router.get('/:id', function(req, res, next) {
+    db("SELECT * FROM item;") //where owner_id 
     .then(results => {
       res.send(results.data);
     })
@@ -22,9 +22,10 @@ router.get('/', function(req, res, next) {
   };
   
   // GET one item
-  router.get("/:id", function(req, res){
-    console.log("inserted by owner_id:", req.user.id)
-    db(`SELECT * FROM item where owner_id=${req.user.id};`)
+  router.get("/:id", validateToken, function(req, res){
+    const id = req.params.id; 
+    //console.log("inserted by owner_id:", req.user.id)
+    db(`SELECT * FROM item where owner_id=${req.user.id};`) // get owner based on shop name then compare /join query based on params
       .then((results) => {
         res.send(results.data);
       })

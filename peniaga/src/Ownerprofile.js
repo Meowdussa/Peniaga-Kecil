@@ -4,17 +4,23 @@ import Paper from "@mui/material/Paper";
 //import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { useState} from "react";
 import axios from "axios";
 import Additem from "./components/Additem";
 import Button from "@mui/material/Button";
 import "./Ownerprofile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Image } from "cloudinary-react";
 import { useHistory } from "react-router-dom";
+
 
 function Ownerprofile() {
   const [input, setInput] = useState({});
   const [item, setItem] = useState(false);
+  const [imageSelected, setImageSelected] = useState("");
+  const [imageURL, setImageURL] = useState("https://fakeimg.pl/600x400");
+  const [header, setHeader] = useState([]);
 
   let history = useHistory();
 
@@ -23,6 +29,71 @@ function Ownerprofile() {
     history.push("/logmasuk");
     console.log("LOGGED OUT");
   }
+  
+
+  const uploadImage = () => {
+    const formData = new FormData();
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "xnxqwn7c");
+
+    axios
+      .post(
+        "https://api.cloudinary.com/v1_1/sai-project/image/upload",
+        formData
+      )
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.data.url);
+        setImageURL(response.data.url);
+      });
+  };
+
+  const addHeader = () => {
+    input.header_image = imageURL;
+    fetch("/headerapi", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accessToken: localStorage.getItem("accessToken"),
+      },
+      body: JSON.stringify(input),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setHeader(data);
+      });
+  };
+
+  const handleSubmit = (event) => {
+    //event.preventDefault();
+    addHeader();
+  };
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setInput({ ...input, [event.target.name]: value });
+  };
+
+
+/*   useEffect(() => {
+    getItem();
+  }, [])
+
+
+const getItem= () =>{
+  axios
+    .get(`http://localhost:5000/itemapi/${id}`, item)
+    .then((response)=>{
+      console.log(response.data)
+      setItem(response.data);
+    })
+    .catch(function (error) {
+      console.log("Error getting item");
+    });    
+}
+ */
+
+
   
   return (
     <div className="ownerprofile">
@@ -33,16 +104,16 @@ function Ownerprofile() {
             <div className="highlight">
               <a>Mulakan dengan memuat naik foto kedai anda</a>
             </div>
-            <img id="header-img" src="https://fakeimg.pl/600x400" />
+            <Image id="header-img" cloudName="sai-project" publicId={imageURL}/>
             <input
               id="header-input"
               label="choose photo"
               type="file"
               name="headerimg"
-              accept="image/*"
-              multiple={false}
+              onChange={(e) => setImageSelected(e.target.files[0])}
             />
-            <Button id="upload-btn" type="submit">
+            <Button id="upload-btn" type="submit" onClick={uploadImage}>
+            <SaveAltIcon />
               SIMPAN
             </Button>
             <div className="highlight">
@@ -67,6 +138,10 @@ function Ownerprofile() {
                     <th style={{ width: "30vw" }}>Nama hidangan</th>
                     <th style={{ width: "10vw" }}>Harga (RM)</th>
                     <th></th>
+                  </tr>
+
+                  <tr>
+                    //map sini utk senarai barang 
                   </tr>
                 </thead>
                 <tbody>
