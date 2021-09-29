@@ -5,7 +5,7 @@ const {validateToken} = require('./JWT');
 
 
 /* GET item listing. */
-router.get('/:id', function(req, res, next) {
+router.get('/', function(req, res, next) {
     db("SELECT * FROM item;") //where owner_id 
     .then(results => {
       res.send(results.data);

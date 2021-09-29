@@ -53,93 +53,91 @@ function Keklapis() {
 
 	return (
 		<div>
-			<Grid container>
-				<Grid item xs={12}>
-					<Card sx={{ width: "100vw" }}>
-						<CardActionArea style={{ backgroundColor: "white" }}>
-							<CardMedia
-								component="img"
-								height="450"
-								image="https://i.postimg.cc/qq3703f8/header.jpg"
-								alt="kek"
-							/>
-							<CardContent style={{ backgroundColor: "white", color: "black" }}>
-								<div className="users">
-									{owner.map(
-										(user) =>
-											user.owner_id === 9 && (
-												<Typography className="user">
-													{user.shop_name}
-													<br />
-													{user.address}
-													<br />
-													<a
-														href={`https://wa.me/${user.phone}`}
-														target="blank"
-													>
-														<PhoneAndroidIcon />
-														{user.phone}
-													</a>
-												</Typography>
-											)
-									)}
-								</div>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</Grid>
-				
-				<div >
+			 <Grid container>
+                <Grid item xs={12}>
+                    <Card sx={{ width: "100vw" }}>
+                        <CardActionArea style={{ backgroundColor: "white" }}>
+                            <CardMedia
+                                component="img"
+                                height="450"
+                                image="https://i.postimg.cc/qq3703f8/header.jpg"
+                                alt="kek"
+                            />
+                            <CardContent style={{ backgroundColor: "white", color: "black" }}>
+                                <div className="users">
+                                    {owner.map(
+                                        (user) =>
+                                            user.owner_id === 38 && (
+                                                <Typography className="user">
+                                                    {user.shop_name}
+                                                    <br />
+                                                    {user.address}
+                                                    <br />
+                                                    <a
+                                                        href={`https://wa.me/${user.phone}`}
+                                                        target="blank"
+                                                    >
+                                                        <PhoneAndroidIcon />
+                                                        {user.phone}
+                                                    </a>
+                                                </Typography>
+                                            )
+                                    )}
+                                </div>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </Grid>
+              
 
-					{item.map(
-						(lol) =>
-							lol.owner_id === 38 && (
-								//each individual cards
-								<Paper
-									style={{ margin: "3vw" }}
-									sx={{ p: 2, /* width: "30vw", */ flexGrow: 1 }}
-								>
-									<Grid container spacing={2}>
-										<Grid item>
-											<img
-												style={{ width: 128, height: 128 }}
-												alt="cadbury"
-												src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
-											/>
-										</Grid>
-										<Grid item xs={12} sm container>
-											<Grid item xs container direction="column" spacing={2}>
-												<Grid item xs>
-													<Typography
-														gutterBottom
-														variant="subtitle1"
-														component="div"
-													>
-														{lol.item_name}
-													</Typography>
-												</Grid>
-												<Grid item>
-													<AddIcon />
-													<Typography
-														sx={{ cursor: "pointer" }}
-														variant="body2"
-													>
-														Tambah
-													</Typography>
-												</Grid>
-											</Grid>
-											<Grid item>
-												<Typography variant="subtitle1" component="div">
-													RM{lol.item_price}
-												</Typography>
-											</Grid>
-										</Grid>
-									</Grid>
-								</Paper>
-							)
-					)}
-				</div>
-			</Grid>
+                    {item.map(
+                        (lol) =>
+                            lol.owner_id === 38 && (
+                                //each individual cards
+                                <Paper
+                                    style={{ margin: "3vw" }}
+                                    sx={{ p: 2, /* width: "30vw", */ flexGrow: 1 }}
+                                >
+                                    <Grid container spacing={2}>
+                                        <Grid item>
+                                            <img
+                                                style={{ width: 128, height: 128 }}
+                                                alt="cadbury"
+                                                src="https://i.postimg.cc/BQwCm84J/kek-lapis-cadbury.jpg"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm container>
+                                            <Grid item xs container direction="column" spacing={2}>
+                                                <Grid item xs>
+                                                    <Typography
+                                                        gutterBottom
+                                                        variant="subtitle1"
+                                                        component="div"
+                                                    >
+                                                        {lol.item_name}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item>
+                                                    <AddIcon />
+                                                    <Typography
+                                                        sx={{ cursor: "pointer" }}
+                                                        variant="body2"
+                                                    >
+                                                        Tambah
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid item>
+                                                <Typography variant="subtitle1" component="div">
+                                                    RM{lol.item_price}
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
+                            )
+                    )}
+            </Grid>
 		</div>
 	);
 }
@@ -182,72 +180,6 @@ export default Keklapis;
 							</Grid>
 						</Grid>
 					</Paper>
-					<Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
-						<Grid container spacing={2}>
-							<Grid item>
-								<img
-									style={{ width: 128, height: 128 }}
-									alt="redvelvet"
-									src="https://i.postimg.cc/HxXph8fR/kek-lapis-red-velvet.jpg"
-								/>
-							</Grid>
-							<Grid item xs={12} sm container>
-								<Grid item xs container direction="column" spacing={2}>
-									<Grid item xs>
-										<Typography
-											gutterBottom
-											variant="subtitle1"
-											component="div"
-										>
-											Kek Lapis Red Velvet
-										</Typography>
-									</Grid>
-									<Grid item>
-										<Typography sx={{ cursor: "pointer" }} variant="body2">
-											Tambah
-										</Typography>
-									</Grid>
-								</Grid>
-								<Grid item>
-									<Typography variant="subtitle1" component="div">
-										RM25.00
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Paper>
-					<Paper sx={{ p: 2, margin: "auto", maxWidth: 500, flexGrow: 1 }}>
-						<Grid container spacing={2}>
-							<Grid item>
-								<img
-									style={{ width: 128, height: 128 }}
-									alt="roll"
-									src="https://i.postimg.cc/W382Vc1w/kek-lapis-roll.jpg"
-								/>
-							</Grid>
-							<Grid item xs={12} sm container>
-								<Grid item xs container direction="column" spacing={2}>
-									<Grid item xs>
-										<Typography
-											gutterBottom
-											variant="subtitle1"
-											component="div"
-										>
-											Kek Lapis Roll
-										</Typography>
-									</Grid>
-									<Grid item>
-										<Typography sx={{ cursor: "pointer" }} variant="body2">
-											Tambah
-										</Typography>
-									</Grid>
-								</Grid>
-								<Grid item>
-									<Typography variant="subtitle1" component="div">
-										RM30.00
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Paper>
+					
+					
 				</Grid> */}
