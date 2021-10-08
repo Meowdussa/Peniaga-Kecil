@@ -19,12 +19,20 @@ UNLIKE: relying on word of mouth/local knowledge
 ## MVP
 
 ### Current Feature
+- JSON Web Token Authentication
+- Geolocation with Leaflet
+- Search bar for shops
+- Image upload with Cloudinary
 
 ### Future Feature
+- Payment gateway
+- Dual language
+- Get user location with Geolocation API
 
 ### Database Scheme
 
---- insert picture----
+![dbschema](https://user-images.githubusercontent.com/86279819/136480966-56cb0c37-5a4a-4df4-8c29-f43c12eaec4f.png)
+
 
 ## Setup
 
@@ -39,10 +47,12 @@ Run `npm install` in project directory. This will install server-related depende
 - Create a new database called peniaga: `create database peniaga`
 - Add a .env file to the main folder of this repository containing the MySQL authentication information for MySQL user. For example:
 
-DB_HOST=localhost
-DB_USER=root
-DB_NAME=peniaga
-DB_PASS=YOURPASSWORD
+```bash
+  DB_HOST=localhost
+  DB_USER=root
+  DB_NAME=peniaga
+  DB_PASS=YOURPASSWORD
+  ```
 
 Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create three tables called 'header', 'item', and 'owner' in your peniaga database.
 
@@ -56,4 +66,4 @@ Run `npm run migrate` in the main folder of this repository, in a new terminal w
 
 
 
-_This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
+_This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Kuala Lumpur._
