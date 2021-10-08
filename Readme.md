@@ -56,6 +56,13 @@ Run `npm install` in project directory. This will install server-related depende
 
 Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create three tables called 'header', 'item', and 'owner' in your peniaga database.
 
+### OpenCage API
+- For Leaflet tow work, first [sign up](https://opencagedata.com/users/sign_up) to get a free API key from OpenCage.
+- Then create a .env file on the root folder of this project, with the following content:
+
+``` bash
+REACT_APP_OCD_API_KEY=[Your-api-key]
+```
 ### Run Your Development Servers
 
 - Run `npm start` in project directory to start the Express server on port 5000
